@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		071FED99193E608600744FBD /* green_circle.png in Resources */ = {isa = PBXBuildFile; fileRef = 071FED97193E608600744FBD /* green_circle.png */; };
+		071FED9A193E608600744FBD /* red_circle.png in Resources */ = {isa = PBXBuildFile; fileRef = 071FED98193E608600744FBD /* red_circle.png */; };
 		075A2F3E193D1D8C002E8926 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 075A2F3D193D1D8C002E8926 /* Foundation.framework */; };
 		075A2F40193D1D8C002E8926 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 075A2F3F193D1D8C002E8926 /* CoreGraphics.framework */; };
 		075A2F42193D1D8C002E8926 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 075A2F41193D1D8C002E8926 /* UIKit.framework */; };
@@ -36,6 +38,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		071FED97193E608600744FBD /* green_circle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = green_circle.png; sourceTree = "<group>"; };
+		071FED98193E608600744FBD /* red_circle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = red_circle.png; sourceTree = "<group>"; };
 		075A2F3A193D1D8C002E8926 /* EasyLaunches.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EasyLaunches.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		075A2F3D193D1D8C002E8926 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		075A2F3F193D1D8C002E8926 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -121,6 +125,8 @@
 		075A2F43193D1D8C002E8926 /* EasyLaunches */ = {
 			isa = PBXGroup;
 			children = (
+				071FED97193E608600744FBD /* green_circle.png */,
+				071FED98193E608600744FBD /* red_circle.png */,
 				075A2F76193DF197002E8926 /* EasyLaunches.entitlements */,
 				075A2F4C193D1D8C002E8926 /* ELAppDelegate.h */,
 				075A2F4D193D1D8C002E8926 /* ELAppDelegate.m */,
@@ -243,6 +249,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				075A2F56193D1D8C002E8926 /* Images.xcassets in Resources */,
+				071FED99193E608600744FBD /* green_circle.png in Resources */,
+				071FED9A193E608600744FBD /* red_circle.png in Resources */,
 				075A2F48193D1D8C002E8926 /* InfoPlist.strings in Resources */,
 				075A2F51193D1D8C002E8926 /* Main.storyboard in Resources */,
 			);
