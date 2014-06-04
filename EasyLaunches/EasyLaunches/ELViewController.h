@@ -8,9 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ELViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+@interface ELViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIGestureRecognizerDelegate>
+
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UIButton *takePhoto;
 @property (weak, nonatomic) IBOutlet UIButton *selectPhoto;
+@property (weak, nonatomic) UIBezierPath *bezierPath;
+
+- (IBAction)redMark:(id)sender;
+- (IBAction)greenMark:(id)sender;
+-(void)ClickEventOnImage:(id)sender;
 
 @end
