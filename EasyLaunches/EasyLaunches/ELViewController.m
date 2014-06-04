@@ -14,6 +14,8 @@
 
 BOOL redEnabled;
 BOOL greenEnbaled;
+UITouch *touched;
+CGPoint location;
 
 @implementation ELViewController
 @synthesize imageView;
@@ -69,20 +71,6 @@ BOOL greenEnbaled;
         [alertColor show];
     }
     
-    if (redEnabled) {
-        NSLog(@"Red Color Selected");
-    } else if (greenEnbaled) {
-        NSLog(@"Green Color Selected");
-    }
-    
-}
-
--(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    UITouch *touched = [[event allTouches] anyObject];
-    CGPoint location = [touched locationInView:touched.view];
-   //NSLog(@"\nx=%.2f y=%.2f", location.x, location.y);
-    
     CALayer *layer = [CALayer layer];
     [layer setBounds:CGRectMake(0, 0, 20.0f, 20.0f)];
     [layer setCornerRadius:10.0f];
@@ -90,44 +78,23 @@ BOOL greenEnbaled;
     
     if (redEnabled) {
         [layer setBackgroundColor:[[UIColor redColor] CGColor]];
+        NSLog(@"Red Color Selected");
     } else if (greenEnbaled) {
         [layer setBackgroundColor:[[UIColor greenColor] CGColor]];
+        NSLog(@"Green Color Selected");
     }
     
     [layer setPosition:CGPointMake(location.x, location.y)];
     
     [[imageView layer] addSublayer:layer];
-    
-        
-    
-    
-//    UIGraphicsBeginImageContext(imageView.image.size);
-//    [imageView.image drawAtPoint:CGPointMake(location.x, location.y)];
-//    
-//    CGContextRef context = UIGraphicsGetCurrentContext();
-//    CGContextSetLineWidth(context, 5.0);
-//    CGContextMoveToPoint(context, location.x, location.y);
-//    CGContextAddLineToPoint(context, imageView.image.size.width, location.y);
-//    
-//    if (redEnabled) {
-//        CGContextSetStrokeColorWithColor(context, [[UIColor redColor] CGColor]);
-//    } else if (greenEnbaled) {
-//        CGContextSetStrokeColorWithColor(context, [[UIColor greenColor] CGColor]);
-//    }
-//    
-//    CGContextStrokePath(context);
-//    
-//    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
-//    imageView.image = newImage;
-//    UIGraphicsEndImageContext();
-    
 }
 
-
-//-(void)tappedImage:(UIGestureRecognizer *)gestureRecognizer
-//{
-//    NSLog(@"it works imageView touch");
-//}
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    touched = [[event allTouches] anyObject];
+    location = [touched locationInView:touched.view];
+   //NSLog(@"\nx=%.2f y=%.2f", location.x, location.y);
+}
 
 - (void)didReceiveMemoryWarning
 {
