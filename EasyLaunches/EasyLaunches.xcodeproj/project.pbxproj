@@ -23,10 +23,10 @@
 		075A2F69193D1D8C002E8926 /* EasyLaunchesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 075A2F68193D1D8C002E8926 /* EasyLaunchesTests.m */; };
 		075A2F73193D1DB6002E8926 /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 075A2F72193D1DB6002E8926 /* opencv2.framework */; };
 		075A2F75193DF197002E8926 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 075A2F74193DF197002E8926 /* AudioToolbox.framework */; };
-		CCAF14E31940FDFE003B30A1 /* slr_camera2-32.png in Resources */ = {isa = PBXBuildFile; fileRef = CCAF14E21940FDFE003B30A1 /* slr_camera2-32.png */; };
-		CCAF14E51940FE4D003B30A1 /* stack_of_photos-32.png in Resources */ = {isa = PBXBuildFile; fileRef = CCAF14E41940FE4D003B30A1 /* stack_of_photos-32.png */; };
-		CCAF14E71940FF91003B30A1 /* eraser-32.png in Resources */ = {isa = PBXBuildFile; fileRef = CCAF14E61940FF91003B30A1 /* eraser-32.png */; };
-		CCAF14EB194100A5003B30A1 /* marker_pen-32.png in Resources */ = {isa = PBXBuildFile; fileRef = CCAF14EA194100A5003B30A1 /* marker_pen-32.png */; };
+		AEDCF7AF1941084300546D00 /* eraser-32.png in Resources */ = {isa = PBXBuildFile; fileRef = AEDCF7AB1941084300546D00 /* eraser-32.png */; };
+		AEDCF7B01941084300546D00 /* marker_pen-32.png in Resources */ = {isa = PBXBuildFile; fileRef = AEDCF7AC1941084300546D00 /* marker_pen-32.png */; };
+		AEDCF7B11941084300546D00 /* slr_camera2-32.png in Resources */ = {isa = PBXBuildFile; fileRef = AEDCF7AD1941084300546D00 /* slr_camera2-32.png */; };
+		AEDCF7B21941084300546D00 /* stack_of_photos-32.png in Resources */ = {isa = PBXBuildFile; fileRef = AEDCF7AE1941084300546D00 /* stack_of_photos-32.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,10 +62,10 @@
 		075A2F72193D1DB6002E8926 /* opencv2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = opencv2.framework; sourceTree = "<group>"; };
 		075A2F74193DF197002E8926 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		075A2F76193DF197002E8926 /* EasyLaunches.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = EasyLaunches.entitlements; sourceTree = "<group>"; };
-		CCAF14E21940FDFE003B30A1 /* slr_camera2-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "slr_camera2-32.png"; path = "../../../../../../Downloads/slr_camera2/slr_camera2-32.png"; sourceTree = "<group>"; };
-		CCAF14E41940FE4D003B30A1 /* stack_of_photos-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "stack_of_photos-32.png"; path = "../../../../../../Downloads/stack_of_photos/stack_of_photos-32.png"; sourceTree = "<group>"; };
-		CCAF14E61940FF91003B30A1 /* eraser-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "eraser-32.png"; path = "../../../../../../Downloads/eraser/eraser-32.png"; sourceTree = "<group>"; };
-		CCAF14EA194100A5003B30A1 /* marker_pen-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "marker_pen-32.png"; path = "../../../../../../Downloads/marker_pen/marker_pen-32.png"; sourceTree = "<group>"; };
+		AEDCF7AB1941084300546D00 /* eraser-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "eraser-32.png"; sourceTree = "<group>"; };
+		AEDCF7AC1941084300546D00 /* marker_pen-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "marker_pen-32.png"; sourceTree = "<group>"; };
+		AEDCF7AD1941084300546D00 /* slr_camera2-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "slr_camera2-32.png"; sourceTree = "<group>"; };
+		AEDCF7AE1941084300546D00 /* stack_of_photos-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stack_of_photos-32.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,10 +129,10 @@
 		075A2F43193D1D8C002E8926 /* EasyLaunches */ = {
 			isa = PBXGroup;
 			children = (
-				CCAF14E61940FF91003B30A1 /* eraser-32.png */,
-				CCAF14EA194100A5003B30A1 /* marker_pen-32.png */,
-				CCAF14E41940FE4D003B30A1 /* stack_of_photos-32.png */,
-				CCAF14E21940FDFE003B30A1 /* slr_camera2-32.png */,
+				AEDCF7AB1941084300546D00 /* eraser-32.png */,
+				AEDCF7AC1941084300546D00 /* marker_pen-32.png */,
+				AEDCF7AD1941084300546D00 /* slr_camera2-32.png */,
+				AEDCF7AE1941084300546D00 /* stack_of_photos-32.png */,
 				075A2F76193DF197002E8926 /* EasyLaunches.entitlements */,
 				075A2F4C193D1D8C002E8926 /* ELAppDelegate.h */,
 				075A2F4D193D1D8C002E8926 /* ELAppDelegate.m */,
@@ -223,7 +223,7 @@
 				ORGANIZATIONNAME = EasyLaunches;
 				TargetAttributes = {
 					075A2F39193D1D8C002E8926 = {
-						DevelopmentTeam = 5N98869Y2C;
+						DevelopmentTeam = A9GRUT7L2F;
 					};
 					075A2F5A193D1D8C002E8926 = {
 						TestTargetID = 075A2F39193D1D8C002E8926;
@@ -254,12 +254,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AEDCF7B11941084300546D00 /* slr_camera2-32.png in Resources */,
 				075A2F56193D1D8C002E8926 /* Images.xcassets in Resources */,
-				CCAF14E51940FE4D003B30A1 /* stack_of_photos-32.png in Resources */,
-				CCAF14E31940FDFE003B30A1 /* slr_camera2-32.png in Resources */,
-				CCAF14E71940FF91003B30A1 /* eraser-32.png in Resources */,
+				AEDCF7B01941084300546D00 /* marker_pen-32.png in Resources */,
+				AEDCF7AF1941084300546D00 /* eraser-32.png in Resources */,
+				AEDCF7B21941084300546D00 /* stack_of_photos-32.png in Resources */,
 				075A2F48193D1D8C002E8926 /* InfoPlist.strings in Resources */,
-				CCAF14EB194100A5003B30A1 /* marker_pen-32.png in Resources */,
 				075A2F51193D1D8C002E8926 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -407,6 +407,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = EasyLaunches/EasyLaunches.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -425,6 +426,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = EasyLaunches/EasyLaunches.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
