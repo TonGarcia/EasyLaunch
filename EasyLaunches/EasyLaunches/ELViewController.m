@@ -63,8 +63,39 @@
     redEnabled = NO;
 }
 
+- (IBAction)clearMarks:(id)sender
+{
+    NSLog(@"cleaning..");
+//    [[imageView layer] removeFromSuperlayer];
+}
+
 -(void)ClickEventOnImage:(id)sender
 {
+    // Validate if a color was selected
+    if (!redEnabled && !greenEnbaled) {
+        UIAlertView *alertColor = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                             message:@"color not selected"
+                                                            delegate:nil
+                                                   cancelButtonTitle:@"OK"
+                                                   otherButtonTitles:nil];
+        [alertColor show];
+    }
+}
+
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    touched = [[event allTouches] anyObject];
+    location = [touched locationInView:touched.view];
+    NSLog(@"\nx=%.2f y=%.2f", location.x, location.y);
+}
+
+
+-(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    touched = [[event allTouches] anyObject];
+    location = [touched locationInView:touched.view];
+    NSLog(@"\nx=%.2f y=%.2f", location.x, location.y);
+    
     // Validate if a color was selected
     if (!redEnabled && !greenEnbaled) {
         UIAlertView *alertColor = [[UIAlertView alloc] initWithTitle:@"Error"
@@ -96,32 +127,19 @@
     [layer setPosition:CGPointMake(location.x, location.y)];
     
     // defining opacity
-    layer.opacity = 0.3f;
+    layer.opacity = 0.1f;
     [[imageView layer] opacity];
     
     // set layer in the image
     [[imageView layer] addSublayer:layer];
-    
 }
-
--(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    touched = [[event allTouches] anyObject];
-    location = [touched locationInView:touched.view];
-   //NSLog(@"\nx=%.2f y=%.2f", location.x, location.y);
-}
-
-//-(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
-//{
-//    touched = [touches anyObject];
-//    location = [touched locationInView:touched.view];
-//}
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 
 // Call the camera to take the photo
 - (IBAction)takePhoto:(id)sender {

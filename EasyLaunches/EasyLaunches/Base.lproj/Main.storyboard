@@ -20,53 +20,48 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="354"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="Cxs-Iw-eUg">
-                                <rect key="frame" x="135" y="362" width="73" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="TakePhoto">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="takePhoto:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Guv-2Q-f1Y"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SpP-p7-9fa">
-                                <rect key="frame" x="227" y="362" width="85" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="GaleryPhoto">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="selectPhoto:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="ME0-iR-7Vf"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xpo-th-ncT">
-                                <rect key="frame" x="8" y="355" width="44" height="44"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button" image="green_circle.png">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="greenMark:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="4zd-7h-Ks3"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fz1-0Y-YZy">
-                                <rect key="frame" x="60" y="355" width="44" height="44"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button" image="red_circle.png">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="redMark:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="X52-Ea-wRa"/>
-                                </connections>
-                            </button>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="center" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oEN-ZL-Iyc">
+                                <rect key="frame" x="0.0" y="524" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <items>
+                                    <barButtonItem image="marker_pen-32.png" id="E0h-1O-MwI">
+                                        <color key="tintColor" red="0.058228706535234764" green="0.7158203125" blue="0.18082488143391293" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <action selector="greenMark:" destination="vXZ-lx-hvc" id="Fub-oi-ZPg"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem width="15" style="plain" systemItem="fixedSpace" id="QJh-4i-ebX"/>
+                                    <barButtonItem image="marker_pen-32.png" id="riA-8X-QLE">
+                                        <color key="tintColor" red="1" green="0.038280828621729657" blue="0.034182206932374393" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <action selector="redMark:" destination="vXZ-lx-hvc" id="vrz-7U-YgW"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem width="26" style="plain" systemItem="fixedSpace" id="Vk8-lc-ISG"/>
+                                    <barButtonItem image="slr_camera2-32.png" id="gOH-Qj-sKE">
+                                        <connections>
+                                            <action selector="takePhoto:" destination="vXZ-lx-hvc" id="uuK-p7-feA"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem width="28" style="plain" systemItem="fixedSpace" id="p37-8v-aoB"/>
+                                    <barButtonItem image="stack_of_photos-32.png" id="3bh-7a-X0H">
+                                        <connections>
+                                            <action selector="selectPhoto:" destination="vXZ-lx-hvc" id="i5p-GZ-LRR"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem width="21" style="plain" systemItem="fixedSpace" id="SmS-MF-YOV"/>
+                                    <barButtonItem image="eraser-32.png" id="82p-kh-4pb">
+                                        <connections>
+                                            <action selector="clearMarks:" destination="vXZ-lx-hvc" id="Z8W-Ff-SH5"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <connections>
                         <outlet property="imageView" destination="uN4-wt-eMd" id="BSW-xX-caN"/>
-                        <outlet property="selectPhoto" destination="SpP-p7-9fa" id="eer-u4-CrO"/>
-                        <outlet property="takePhoto" destination="kh9-bI-dsS" id="ZoR-9O-4T5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
@@ -74,8 +69,10 @@
         </scene>
     </scenes>
     <resources>
-        <image name="green_circle.png" width="512" height="512"/>
-        <image name="red_circle.png" width="600" height="600"/>
+        <image name="eraser-32.png" width="32" height="32"/>
+        <image name="marker_pen-32.png" width="32" height="32"/>
+        <image name="slr_camera2-32.png" width="32" height="32"/>
+        <image name="stack_of_photos-32.png" width="32" height="32"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
