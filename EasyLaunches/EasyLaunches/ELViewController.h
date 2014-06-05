@@ -13,10 +13,11 @@
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UIButton *takePhoto;
 @property (weak, nonatomic) IBOutlet UIButton *selectPhoto;
-@property (weak, nonatomic) UIBezierPath *bezierPath;
+@property (strong, nonatomic) UITouch *touched;
+@property (nonatomic) CGPoint location;
 
 - (IBAction)redMark:(id)sender;
 - (IBAction)greenMark:(id)sender;
--(void)ClickEventOnImage:(id)sender;
+- (void)ClickEventOnImage:(id)sender;
 
 @end

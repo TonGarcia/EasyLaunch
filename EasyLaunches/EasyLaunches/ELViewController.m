@@ -12,14 +12,16 @@
 
 @end
 
-BOOL redEnabled;
-BOOL greenEnbaled;
-UITouch *touched;
-CGPoint location;
-
 @implementation ELViewController
+{
+    BOOL redEnabled;
+    BOOL greenEnbaled;
+    CALayer *layer;
+}
+
 @synthesize imageView;
-@synthesize bezierPath;
+@synthesize touched;
+@synthesize location;
 
 - (void)viewDidLoad
 {
@@ -42,10 +44,11 @@ CGPoint location;
     
     UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(ClickEventOnImage:)];
     tapGestureRecognizer.cancelsTouchesInView = YES;
-    [tapGestureRecognizer setNumberOfTapsRequired:1];
-    [tapGestureRecognizer setDelegate:self];
+    //[tapGestureRecognizer setNumberOfTapsRequired:1];
+//    [tapGestureRecognizer setDelegate:self];
     [imageView addGestureRecognizer:tapGestureRecognizer];
     imageView.userInteractionEnabled = YES;
+    imageView.multipleTouchEnabled = YES;
 }
 
 - (IBAction)redMark:(id)sender
@@ -62,6 +65,7 @@ CGPoint location;
 
 -(void)ClickEventOnImage:(id)sender
 {
+    // Validate if a color was selected
     if (!redEnabled && !greenEnbaled) {
         UIAlertView *alertColor = [[UIAlertView alloc] initWithTitle:@"Error"
                                                              message:@"color not selected"
@@ -71,22 +75,33 @@ CGPoint location;
         [alertColor show];
     }
     
-    CALayer *layer = [CALayer layer];
+    // Painting image
+    
+    // defining layer
+    layer = [CALayer layer];
     [layer setBounds:CGRectMake(0, 0, 20.0f, 20.0f)];
     [layer setCornerRadius:10.0f];
     [layer setMasksToBounds:YES];
     
+    // selecting color to layer
     if (redEnabled) {
         [layer setBackgroundColor:[[UIColor redColor] CGColor]];
-        NSLog(@"Red Color Selected");
+        //NSLog(@"Red Color Selected");
     } else if (greenEnbaled) {
         [layer setBackgroundColor:[[UIColor greenColor] CGColor]];
-        NSLog(@"Green Color Selected");
+        //NSLog(@"Green Color Selected");
     }
     
+    // position for to paint layer
     [layer setPosition:CGPointMake(location.x, location.y)];
     
+    // defining opacity
+    layer.opacity = 0.3f;
+    [[imageView layer] opacity];
+    
+    // set layer in the image
     [[imageView layer] addSublayer:layer];
+    
 }
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
@@ -95,6 +110,12 @@ CGPoint location;
     location = [touched locationInView:touched.view];
    //NSLog(@"\nx=%.2f y=%.2f", location.x, location.y);
 }
+
+//-(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
+//{
+//    touched = [touches anyObject];
+//    location = [touched locationInView:touched.view];
+//}
 
 - (void)didReceiveMemoryWarning
 {
