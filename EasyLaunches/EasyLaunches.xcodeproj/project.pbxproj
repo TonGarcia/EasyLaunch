@@ -223,7 +223,7 @@
 				ORGANIZATIONNAME = EasyLaunches;
 				TargetAttributes = {
 					075A2F39193D1D8C002E8926 = {
-						DevelopmentTeam = A9GRUT7L2F;
+						DevelopmentTeam = 5N98869Y2C;
 					};
 					075A2F5A193D1D8C002E8926 = {
 						TestTargetID = 075A2F39193D1D8C002E8926;
@@ -408,6 +408,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = EasyLaunches/EasyLaunches.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -416,6 +417,7 @@
 				GCC_PREFIX_HEADER = "EasyLaunches/EasyLaunches-Prefix.pch";
 				INFOPLIST_FILE = "EasyLaunches/EasyLaunches-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -427,6 +429,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = EasyLaunches/EasyLaunches.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -435,6 +438,7 @@
 				GCC_PREFIX_HEADER = "EasyLaunches/EasyLaunches-Prefix.pch";
 				INFOPLIST_FILE = "EasyLaunches/EasyLaunches-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
