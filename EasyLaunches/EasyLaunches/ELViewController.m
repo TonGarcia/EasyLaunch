@@ -13,13 +13,9 @@
 @end
 
 @implementation ELViewController
-{
-    BOOL redEnabled;
-    BOOL greenEnbaled;
-    CALayer *layer;
-}
 
 @synthesize imageView;
+@synthesize tempImageView;
 @synthesize touched;
 @synthesize location;
 
@@ -38,38 +34,53 @@
         
         [myAlertView show];
         
+        smallerPointX = imageView.frame.size.width;
+        smallerPointY = imageView.frame.size.height;
+        biggerPointX = 0.0;
+        biggerPointY = 0.0;
+        
     }
     
     //enable gesture for imageview - listening touch
-    
-    UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(ClickEventOnImage:)];
-    tapGestureRecognizer.cancelsTouchesInView = YES;
-    //[tapGestureRecognizer setNumberOfTapsRequired:1];
-//    [tapGestureRecognizer setDelegate:self];
-    [imageView addGestureRecognizer:tapGestureRecognizer];
-    imageView.userInteractionEnabled = YES;
-    imageView.multipleTouchEnabled = YES;
+    red = 0.0/255.0;
+    green = 0.0/255.0;
+    blue = 0.0/255.0;
+    brush = 20.0;
+    opacity = 0.1;
 }
 
 - (IBAction)redMark:(id)sender
 {
     redEnabled = YES;
     greenEnbaled = NO;
+    red = 255.0/255.0;
+    green = 0.0/255.0;
+    
 }
 
 - (IBAction)greenMark:(id)sender
 {
     greenEnbaled = YES;
     redEnabled = NO;
+    red = 0.0/255.0;
+    green = 255.0/255.0;
 }
+
 
 - (IBAction)clearMarks:(id)sender
 {
     NSLog(@"cleaning..");
-//    [[imageView layer] removeFromSuperlayer];
+    imageView.image = nil;
+    imageView.image = myImage;
+    
+    smallerPointX = imageView.frame.size.width;
+    smallerPointY = imageView.frame.size.height;
+    biggerPointX = 0.0;
+    biggerPointY = 0.0;
+
 }
 
--(void)ClickEventOnImage:(id)sender
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
     // Validate if a color was selected
     if (!redEnabled && !greenEnbaled) {
@@ -80,22 +91,19 @@
                                                    otherButtonTitles:nil];
         [alertColor show];
     }
-}
-
--(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    touched = [[event allTouches] anyObject];
-    location = [touched locationInView:touched.view];
-    NSLog(@"\nx=%.2f y=%.2f", location.x, location.y);
+    
+    mouseSwiped = NO;
+    UITouch *touch = [touches anyObject];
+    lastPoint = [touch locationInView:imageView];
+    
+    //touched = [[event allTouches] anyObject];
+    //location = [touched locationInView:touched.view];
+    //NSLog(@"\nx=%.2f y=%.2f", location.x, location.y);
 }
 
 
 -(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    touched = [[event allTouches] anyObject];
-    location = [touched locationInView:touched.view];
-    NSLog(@"\nx=%.2f y=%.2f", location.x, location.y);
-    
     // Validate if a color was selected
     if (!redEnabled && !greenEnbaled) {
         UIAlertView *alertColor = [[UIAlertView alloc] initWithTitle:@"Error"
@@ -106,32 +114,58 @@
         [alertColor show];
     }
     
-    // Painting image
+    mouseSwiped = YES;
+    UITouch *touch = [touches anyObject];
+    CGPoint currentPoint = [touch locationInView:imageView];
     
-    // defining layer
-    layer = [CALayer layer];
-    [layer setBounds:CGRectMake(0, 0, 20.0f, 20.0f)];
-    [layer setCornerRadius:10.0f];
-    [layer setMasksToBounds:YES];
+    UIGraphicsBeginImageContext(imageView.frame.size);
+    [imageView.image drawInRect:CGRectMake(0, 0, imageView.frame.size.width, imageView.frame.size.height)];
+    CGContextMoveToPoint(UIGraphicsGetCurrentContext(), lastPoint.x, lastPoint.y);
+    CGContextAddLineToPoint(UIGraphicsGetCurrentContext(), currentPoint.x, currentPoint.y);
+    CGContextSetLineCap(UIGraphicsGetCurrentContext(), kCGLineCapRound);
+    CGContextSetLineWidth(UIGraphicsGetCurrentContext(), brush);
+    CGContextSetRGBStrokeColor(UIGraphicsGetCurrentContext(), red, green, blue, opacity);
+    CGContextSetBlendMode(UIGraphicsGetCurrentContext(), kCGBlendModeNormal);
     
-    // selecting color to layer
-    if (redEnabled) {
-        [layer setBackgroundColor:[[UIColor redColor] CGColor]];
-        //NSLog(@"Red Color Selected");
-    } else if (greenEnbaled) {
-        [layer setBackgroundColor:[[UIColor greenColor] CGColor]];
-        //NSLog(@"Green Color Selected");
+    CGContextStrokePath(UIGraphicsGetCurrentContext());
+    imageView.image = UIGraphicsGetImageFromCurrentImageContext();
+    [imageView setAlpha:1.0];
+    UIGraphicsEndImageContext();
+    
+    lastPoint = currentPoint;
+    
+    touched = [[event allTouches] anyObject];
+    location = [touched locationInView:touched.view];
+    NSLog(@"\nx=%.2f y=%.2f", location.x, location.y);
+    
+    if (smallerPointX > location.x) {
+        smallerPointX = location.x;
     }
     
-    // position for to paint layer
-    [layer setPosition:CGPointMake(location.x, location.y)];
+    if (smallerPointY > location.y) {
+        smallerPointY = location.y;
+    }
     
-    // defining opacity
-    layer.opacity = 0.1f;
-    [[imageView layer] opacity];
+    if (biggerPointX < location.x) {
+        biggerPointX = location.x;
+    }
     
-    // set layer in the image
-    [[imageView layer] addSublayer:layer];
+    if (biggerPointY < location.y) {
+        biggerPointY = location.y;
+    }
+}
+
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    CGRect cropRect = CGRectMake(smallerPointX-(brush/2), smallerPointY-(brush/2), (biggerPointX - smallerPointX)+brush, (biggerPointY - smallerPointY)+brush);
+    CGImageRef croppedImage = CGImageCreateWithImageInRect([imageView.image CGImage], cropRect);
+    
+    // Leonn, abaixo está um código que irá setar a imagem recortada. No entanto, não devemos setar e sim salvar em alguma estrutura.
+    // o tempo acabou aqui e preciso ir embora, caso contrário o Braga me esgana, senão eu faria e terminaria. O corte está perfeito, não mude nada kkkk.
+    //O que falta é salvar as imagens. Procure uma estrutura que salve os recortes e pronto. Observe que o tipo UIImage não pega o tipo CGImageRef,
+    // veja abaixo como eu fiz pra unir os diferentes tipos.
+    
+    //imageView.image = [UIImage imageWithCGImage:croppedImage];
 }
 
 - (void)didReceiveMemoryWarning
@@ -153,6 +187,7 @@
 
 // Select photo button listnning event
 - (IBAction)selectPhoto:(id)sender {
+    [imageView clearsContextBeforeDrawing];
     UIImagePickerController *picker = [[UIImagePickerController alloc] init];
     picker.delegate = self;
     picker.allowsEditing = YES;
@@ -164,8 +199,9 @@
 // Load the image
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
     // Prepair the image
-    UIImage *chosenImage = info[UIImagePickerControllerEditedImage];
-    self.imageView.image = chosenImage;
+    UIImage *choosenImage = info[UIImagePickerControllerEditedImage];
+    myImage = choosenImage;
+    self.imageView.image = choosenImage;
     // Animate to callback from the camera
     [picker dismissViewControllerAnimated:YES completion:NULL];
     

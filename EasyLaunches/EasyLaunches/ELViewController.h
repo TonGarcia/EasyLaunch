@@ -9,8 +9,26 @@
 #import <UIKit/UIKit.h>
 
 @interface ELViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIGestureRecognizerDelegate>
+{
+    CGPoint lastPoint;
+    CGFloat red;
+    CGFloat green;
+    CGFloat blue;
+    CGFloat brush;
+    CGFloat opacity;
+    BOOL mouseSwiped;
+    UIImage *myImage;
+    BOOL redEnabled;
+    BOOL greenEnbaled;
+    CALayer *layer;
+    CGFloat smallerPointX;
+    CGFloat biggerPointX;
+    CGFloat smallerPointY;
+    CGFloat biggerPointY;
+}
 
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
+@property (weak, nonatomic) IBOutlet UIImageView *tempImageView;
 @property (strong, nonatomic) UITouch *touched;
 @property (nonatomic) CGPoint location;
 
@@ -19,7 +37,5 @@
 - (IBAction)clearMarks:(id)sender;
 - (IBAction)takePhoto:(id)sender;
 - (IBAction)selectPhoto:(id)sender;
-
-- (void)ClickEventOnImage:(id)sender;
 
 @end
