@@ -16,7 +16,6 @@
     CGFloat blue;
     CGFloat brush;
     CGFloat opacity;
-    BOOL mouseSwiped;
     UIImage *myImage;
     BOOL redEnabled;
     BOOL greenEnbaled;
@@ -27,8 +26,7 @@
     CGFloat biggerPointY;
 }
 
-@property (weak, nonatomic) IBOutlet UIImageView *imageView;
-@property (weak, nonatomic) IBOutlet UIImageView *tempImageView;
+@property (strong, nonatomic) IBOutlet UIImageView *imageView;
 @property (strong, nonatomic) UITouch *touched;
 @property (nonatomic) CGPoint location;
 
