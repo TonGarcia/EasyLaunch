@@ -23,6 +23,8 @@
 		075A2F69193D1D8C002E8926 /* EasyLaunchesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 075A2F68193D1D8C002E8926 /* EasyLaunchesTests.m */; };
 		075A2F73193D1DB6002E8926 /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 075A2F72193D1DB6002E8926 /* opencv2.framework */; };
 		075A2F75193DF197002E8926 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 075A2F74193DF197002E8926 /* AudioToolbox.framework */; };
+		9377E56719490B4600E9A2FA /* settings-32.png in Resources */ = {isa = PBXBuildFile; fileRef = 9377E56519490B4600E9A2FA /* settings-32.png */; };
+		9377E56819490B4600E9A2FA /* upload_to_cloud_filled-32.png in Resources */ = {isa = PBXBuildFile; fileRef = 9377E56619490B4600E9A2FA /* upload_to_cloud_filled-32.png */; };
 		AEDCF7AF1941084300546D00 /* eraser-32.png in Resources */ = {isa = PBXBuildFile; fileRef = AEDCF7AB1941084300546D00 /* eraser-32.png */; };
 		AEDCF7B01941084300546D00 /* marker_pen-32.png in Resources */ = {isa = PBXBuildFile; fileRef = AEDCF7AC1941084300546D00 /* marker_pen-32.png */; };
 		AEDCF7B11941084300546D00 /* slr_camera2-32.png in Resources */ = {isa = PBXBuildFile; fileRef = AEDCF7AD1941084300546D00 /* slr_camera2-32.png */; };
@@ -62,6 +64,8 @@
 		075A2F72193D1DB6002E8926 /* opencv2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = opencv2.framework; sourceTree = "<group>"; };
 		075A2F74193DF197002E8926 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		075A2F76193DF197002E8926 /* EasyLaunches.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = EasyLaunches.entitlements; sourceTree = "<group>"; };
+		9377E56519490B4600E9A2FA /* settings-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings-32.png"; sourceTree = "<group>"; };
+		9377E56619490B4600E9A2FA /* upload_to_cloud_filled-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "upload_to_cloud_filled-32.png"; sourceTree = "<group>"; };
 		AEDCF7AB1941084300546D00 /* eraser-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "eraser-32.png"; sourceTree = "<group>"; };
 		AEDCF7AC1941084300546D00 /* marker_pen-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "marker_pen-32.png"; sourceTree = "<group>"; };
 		AEDCF7AD1941084300546D00 /* slr_camera2-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "slr_camera2-32.png"; sourceTree = "<group>"; };
@@ -129,6 +133,8 @@
 		075A2F43193D1D8C002E8926 /* EasyLaunches */ = {
 			isa = PBXGroup;
 			children = (
+				9377E56519490B4600E9A2FA /* settings-32.png */,
+				9377E56619490B4600E9A2FA /* upload_to_cloud_filled-32.png */,
 				AEDCF7AB1941084300546D00 /* eraser-32.png */,
 				AEDCF7AC1941084300546D00 /* marker_pen-32.png */,
 				AEDCF7AD1941084300546D00 /* slr_camera2-32.png */,
@@ -258,7 +264,9 @@
 				075A2F56193D1D8C002E8926 /* Images.xcassets in Resources */,
 				AEDCF7B01941084300546D00 /* marker_pen-32.png in Resources */,
 				AEDCF7AF1941084300546D00 /* eraser-32.png in Resources */,
+				9377E56819490B4600E9A2FA /* upload_to_cloud_filled-32.png in Resources */,
 				AEDCF7B21941084300546D00 /* stack_of_photos-32.png in Resources */,
+				9377E56719490B4600E9A2FA /* settings-32.png in Resources */,
 				075A2F48193D1D8C002E8926 /* InfoPlist.strings in Resources */,
 				075A2F51193D1D8C002E8926 /* Main.storyboard in Resources */,
 			);
