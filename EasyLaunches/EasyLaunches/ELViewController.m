@@ -14,22 +14,28 @@
 
 @implementation ELViewController
 
+UIButton *button;
+
 @synthesize imageView;
 @synthesize touched;
 @synthesize location;
+@synthesize markButton;
+@synthesize markToolbar;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
     
-    //Configurando top
+    //Configurando Navigation Controller
     self.navigationItem.title = @"Easy Launch";
     
+    // Left Button
     UIBarButtonItem *leftButton = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"settings-32.png"] style:UIBarButtonItemStyleDone target:self action:@selector(settingView)];
     
     self.navigationItem.leftBarButtonItem = leftButton;
     
+    // Right Button
     UIBarButtonItem *rightButton = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"upload_to_cloud_filled-32.png"] style:UIBarButtonItemStyleDone target:self action:@selector(sendImages)];
     self.navigationItem.rightBarButtonItem = rightButton;
     
@@ -45,42 +51,72 @@
                                                     otherButtonTitles: nil];
         
         [myAlertView show];
-        
-        smallerPointX = imageView.frame.size.width;
-        smallerPointY = imageView.frame.size.height;
-        biggerPointX = 0.0;
-        biggerPointY = 0.0;
     }
     
-    //enable gesture for imageview - listening touch
+    // initialize crop area
+    smallerPointX = imageView.frame.size.width;
+    smallerPointY = imageView.frame.size.height;
+    biggerPointX = 0.0;
+    biggerPointY = 0.0;
+    
+    //set values
     red = 0.0/255.0;
     green = 0.0/255.0;
     blue = 0.0/255.0;
     brush = 20.0;
     opacity = 0.1;
+    
 }
 
-//-(void) viewWillAppear:(BOOL)animated
-//{
-//    [super viewWillAppear:YES];
-//    []
-//}
+- (IBAction)markButtonClicked:(UIBarButtonItem *)sender forEvent:(UIEvent*)event
+{
+    [self becomeFirstResponder];
+    
+    UIView *buttonView=[[event.allTouches anyObject] view];
+    CGRect buttonFrame=[buttonView convertRect:buttonView.frame toView:self.view];
+    
+    UIMenuItem *menuItemRedColor = [[UIMenuItem alloc] initWithTitle:@"Red" action:@selector(redMark:)];
+    UIMenuItem *menuItemGreenColor = [[UIMenuItem alloc] initWithTitle:@"Green" action:@selector(greenMark:)];
+    
+    UIMenuController *menu = [UIMenuController sharedMenuController];
+    
+    [menu setMenuItems:[NSArray arrayWithObjects:menuItemRedColor, menuItemGreenColor, nil]];
+    
+    [menu setTargetRect:buttonFrame inView:self.view];
+    
+    [menu setMenuVisible:YES animated:YES];
+}
 
-- (IBAction)redMark:(id)sender
+- (BOOL)canBecomeFirstResponder {
+    return YES;
+}
+
+- (BOOL)canPerformAction:(SEL)action withSender:(id)sender
+{
+    BOOL result = NO;
+    if(@selector(greenMark:) == action ||
+       @selector(redMark:) == action) {
+        result = YES;
+    }
+    return result;
+}
+
+- (void)redMark:(id)sender
 {
     redEnabled = YES;
     greenEnbaled = NO;
     red = 255.0/255.0;
     green = 0.0/255.0;
-    
+    markButton.tintColor = [UIColor redColor];
 }
 
-- (IBAction)greenMark:(id)sender
+- (void)greenMark:(id)sender
 {
     greenEnbaled = YES;
     redEnabled = NO;
     red = 0.0/255.0;
     green = 255.0/255.0;
+    markButton.tintColor = [UIColor greenColor];
 }
 
 
@@ -92,7 +128,6 @@
     smallerPointY = imageView.frame.size.height;
     biggerPointX = 0.0;
     biggerPointY = 0.0;
-
 }
 
 -(void)setImageAndResizeUIImageView
@@ -234,6 +269,12 @@
     
     
     [self presentViewController:picker animated:YES completion:NULL];
+}
+
+- (IBAction)ds:(id)sender {
+}
+
+- (IBAction)markButtonClicked:(id)sender {
 }
 
 // Load the image

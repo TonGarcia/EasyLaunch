@@ -40,34 +40,26 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items>
                                     <barButtonItem image="marker_pen-32.png" id="E0h-1O-MwI">
-                                        <color key="tintColor" red="0.058228706535234764" green="0.7158203125" blue="0.18082488143391293" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
-                                            <action selector="greenMark:" destination="vXZ-lx-hvc" id="Fub-oi-ZPg"/>
+                                            <action selector="markButtonClicked:forEvent:" destination="vXZ-lx-hvc" id="jyL-91-HFi"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem width="15" style="plain" systemItem="fixedSpace" id="QJh-4i-ebX"/>
-                                    <barButtonItem image="marker_pen-32.png" id="riA-8X-QLE">
-                                        <color key="tintColor" red="1" green="0.038280828621729657" blue="0.034182206932374393" alpha="1" colorSpace="calibratedRGB"/>
+                                    <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="Vk8-lc-ISG"/>
+                                    <barButtonItem image="eraser-32.png" id="82p-kh-4pb">
                                         <connections>
-                                            <action selector="redMark:" destination="vXZ-lx-hvc" id="vrz-7U-YgW"/>
+                                            <action selector="clearMarks:" destination="vXZ-lx-hvc" id="Z8W-Ff-SH5"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem width="26" style="plain" systemItem="fixedSpace" id="Vk8-lc-ISG"/>
+                                    <barButtonItem width="39" style="plain" systemItem="fixedSpace" id="SmS-MF-YOV"/>
                                     <barButtonItem image="slr_camera2-32.png" id="gOH-Qj-sKE">
                                         <connections>
                                             <action selector="takePhoto:" destination="vXZ-lx-hvc" id="uuK-p7-feA"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem width="28" style="plain" systemItem="fixedSpace" id="p37-8v-aoB"/>
+                                    <barButtonItem width="45" style="plain" systemItem="fixedSpace" id="p37-8v-aoB"/>
                                     <barButtonItem image="stack_of_photos-32.png" id="3bh-7a-X0H">
                                         <connections>
                                             <action selector="selectPhoto:" destination="vXZ-lx-hvc" id="i5p-GZ-LRR"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem width="21" style="plain" systemItem="fixedSpace" id="SmS-MF-YOV"/>
-                                    <barButtonItem image="eraser-32.png" id="82p-kh-4pb">
-                                        <connections>
-                                            <action selector="clearMarks:" destination="vXZ-lx-hvc" id="Z8W-Ff-SH5"/>
                                         </connections>
                                     </barButtonItem>
                                 </items>
@@ -78,6 +70,8 @@
                     <navigationItem key="navigationItem" id="8zV-jS-oJU"/>
                     <connections>
                         <outlet property="imageView" destination="uN4-wt-eMd" id="BSW-xX-caN"/>
+                        <outlet property="markButton" destination="E0h-1O-MwI" id="JHr-GX-d0l"/>
+                        <outlet property="markToolbar" destination="oEN-ZL-Iyc" id="dIe-Cz-E1k"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>

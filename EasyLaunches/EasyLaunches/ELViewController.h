@@ -29,11 +29,15 @@
 @property (strong, nonatomic) IBOutlet UIImageView *imageView;
 @property (strong, nonatomic) UITouch *touched;
 @property (nonatomic) CGPoint location;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *markButton;
+@property (strong, nonatomic) IBOutlet UIToolbar *markToolbar;
 
-- (IBAction)redMark:(id)sender;
-- (IBAction)greenMark:(id)sender;
+- (void)redMark:(id)sender;
+- (void)greenMark:(id)sender;
+
 - (IBAction)clearMarks:(id)sender;
 - (IBAction)takePhoto:(id)sender;
 - (IBAction)selectPhoto:(id)sender;
+- (IBAction)markButtonClicked:(UIBarButtonItem *)sender forEvent:(UIEvent*)event;
 
 @end
