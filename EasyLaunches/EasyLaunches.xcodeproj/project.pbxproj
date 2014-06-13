@@ -133,12 +133,6 @@
 		075A2F43193D1D8C002E8926 /* EasyLaunches */ = {
 			isa = PBXGroup;
 			children = (
-				9377E56519490B4600E9A2FA /* settings-32.png */,
-				9377E56619490B4600E9A2FA /* upload_to_cloud_filled-32.png */,
-				AEDCF7AB1941084300546D00 /* eraser-32.png */,
-				AEDCF7AC1941084300546D00 /* marker_pen-32.png */,
-				AEDCF7AD1941084300546D00 /* slr_camera2-32.png */,
-				AEDCF7AE1941084300546D00 /* stack_of_photos-32.png */,
 				075A2F76193DF197002E8926 /* EasyLaunches.entitlements */,
 				075A2F4C193D1D8C002E8926 /* ELAppDelegate.h */,
 				075A2F4D193D1D8C002E8926 /* ELAppDelegate.m */,
@@ -154,6 +148,12 @@
 		075A2F44193D1D8C002E8926 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				9377E56519490B4600E9A2FA /* settings-32.png */,
+				9377E56619490B4600E9A2FA /* upload_to_cloud_filled-32.png */,
+				AEDCF7AB1941084300546D00 /* eraser-32.png */,
+				AEDCF7AC1941084300546D00 /* marker_pen-32.png */,
+				AEDCF7AD1941084300546D00 /* slr_camera2-32.png */,
+				AEDCF7AE1941084300546D00 /* stack_of_photos-32.png */,
 				075A2F45193D1D8C002E8926 /* EasyLaunches-Info.plist */,
 				075A2F46193D1D8C002E8926 /* InfoPlist.strings */,
 				075A2F49193D1D8C002E8926 /* main.m */,

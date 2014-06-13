@@ -114,9 +114,10 @@ UIButton *button;
 {
     greenEnbaled = YES;
     redEnabled = NO;
-    red = 0.0/255.0;
-    green = 255.0/255.0;
-    markButton.tintColor = [UIColor greenColor];
+    red=88/255.0;
+    green=181/255.0;
+    blue=73/255.0;
+    markButton.tintColor = [UIColor colorWithRed:red green:green blue:blue alpha:1];
 }
 
 
@@ -236,10 +237,10 @@ UIButton *button;
     
     imageView.image = [UIImage imageWithCGImage:croppedImage];
     
-    smallerPointX = imageView.frame.size.width;
-    smallerPointY = imageView.frame.size.height;
-    biggerPointX = 0.0;
-    biggerPointY = 0.0;
+    //smallerPointX = imageView.frame.size.width;
+    //smallerPointY = imageView.frame.size.height;
+    //biggerPointX = 0.0;
+    //biggerPointY = 0.0;
 }
 
 - (void)didReceiveMemoryWarning
