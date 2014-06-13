@@ -7,6 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <opencv2/highgui/highgui.hpp>
+#import <opencv2/imgproc/imgproc.hpp>
+#import <opencv2/ml/ml.hpp>
+using namespace cv;
 
 @interface ELViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIGestureRecognizerDelegate>
 {

@@ -8,6 +8,7 @@
 
 #import "ELViewController.h"
 
+
 @interface ELViewController ()
 
 @end
@@ -25,7 +26,6 @@ UIButton *button;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
     
     //Configurando Navigation Controller
     self.navigationItem.title = @"Easy Launch";
@@ -63,7 +63,7 @@ UIButton *button;
     red = 0.0/255.0;
     green = 0.0/255.0;
     blue = 0.0/255.0;
-    brush = 20.0;
+    brush = 40.0;
     opacity = 0.1;
     
 }
@@ -217,6 +217,7 @@ UIButton *button;
         biggerPointY = location.y;
     }
 }
+
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
