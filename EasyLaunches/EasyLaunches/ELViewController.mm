@@ -28,18 +28,15 @@ UIButton *button;
     [super viewDidLoad];
     
     //Configurando Navigation Controller
-    self.navigationItem.title = @"Easy Launch";
     
     // Left Button
-    UIBarButtonItem *leftButton = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"settings-32.png"] style:UIBarButtonItemStyleDone target:self action:@selector(settingView)];
-    
-    self.navigationItem.leftBarButtonItem = leftButton;
-    
+//    UIBarButtonItem *leftButton = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"settings-32.png"] style:UIBarButtonItemStyleDone target:self action:@selector(callSettingView)];
+//    
+//    self.navigationItem.leftBarButtonItem = leftButton;
+//    
     // Right Button
-    UIBarButtonItem *rightButton = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"upload_to_cloud_filled-32.png"] style:UIBarButtonItemStyleDone target:self action:@selector(sendImages)];
-    self.navigationItem.rightBarButtonItem = rightButton;
-    
-    
+//    UIBarButtonItem *rightButton = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"upload_to_cloud_filled-32.png"] style:UIBarButtonItemStyleDone target:self action:@selector(sendImages)];
+//    self.navigationItem.rightBarButtonItem = rightButton;
     
     // Validate if it has a camera
     if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
@@ -63,7 +60,7 @@ UIButton *button;
     red = 0.0/255.0;
     green = 0.0/255.0;
     blue = 0.0/255.0;
-    brush = 40.0;
+    brush = 20.0;
     opacity = 0.1;
     
 }
@@ -107,6 +104,7 @@ UIButton *button;
     greenEnbaled = NO;
     red = 255.0/255.0;
     green = 0.0/255.0;
+    blue = 0.0/2555.0;
     markButton.tintColor = [UIColor redColor];
 }
 
@@ -125,8 +123,8 @@ UIButton *button;
 {
     [self setImageAndResizeUIImageView];
     
-    smallerPointX = imageView.frame.size.width;
-    smallerPointY = imageView.frame.size.height;
+    smallerPointX = myImage.size.width;
+    smallerPointY = myImage.size.height;
     biggerPointX = 0.0;
     biggerPointY = 0.0;
 }
@@ -139,9 +137,10 @@ UIButton *button;
     imageView.center = imageView.superview.center;
 }
 
-- (void)settingView
+- (void)callSettingView
 {
     NSLog(@"Create view for settings");
+    //self.navigationController.rotatingFooterView = self.childViewControllers;
 }
 
 - (void)sendImages
@@ -238,10 +237,10 @@ UIButton *button;
     
     imageView.image = [UIImage imageWithCGImage:croppedImage];
     
-    //smallerPointX = imageView.frame.size.width;
-    //smallerPointY = imageView.frame.size.height;
-    //biggerPointX = 0.0;
-    //biggerPointY = 0.0;
+    smallerPointX = imageView.frame.size.width;
+    smallerPointY = imageView.frame.size.height;
+    biggerPointX = 0.0;
+    biggerPointY = 0.0;
 }
 
 - (void)didReceiveMemoryWarning
@@ -271,12 +270,6 @@ UIButton *button;
     
     
     [self presentViewController:picker animated:YES completion:NULL];
-}
-
-- (IBAction)ds:(id)sender {
-}
-
-- (IBAction)markButtonClicked:(id)sender {
 }
 
 // Load the image

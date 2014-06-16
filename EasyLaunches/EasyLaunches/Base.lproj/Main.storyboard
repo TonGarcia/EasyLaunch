@@ -19,23 +19,23 @@
             </objects>
             <point key="canvasLocation" x="-334" y="25"/>
         </scene>
-        <!--View Controller-->
+        <!--HomeView-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="ELViewController" sceneMemberID="viewController">
+                <viewController id="vXZ-lx-hvc" userLabel="HomeView" customClass="ELViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
-                        <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
+                        <viewControllerLayoutGuide type="top" id="lPw-PR-LBC"/>
+                        <viewControllerLayoutGuide type="bottom" id="Q4A-E7-RNi"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uN4-wt-eMd">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uN4-wt-eMd">
                                 <rect key="frame" x="0.0" y="108" width="320" height="352"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="center" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oEN-ZL-Iyc">
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="oEN-ZL-Iyc">
                                 <rect key="frame" x="0.0" y="524" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items>
@@ -66,8 +66,28 @@
                             </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="oEN-ZL-Iyc" firstAttribute="trailing" secondItem="uN4-wt-eMd" secondAttribute="trailing" id="9D3-iv-QLn"/>
+                            <constraint firstItem="uN4-wt-eMd" firstAttribute="top" secondItem="lPw-PR-LBC" secondAttribute="bottom" constant="44" id="CqI-iR-dzT"/>
+                            <constraint firstItem="oEN-ZL-Iyc" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="EHT-3J-eog"/>
+                            <constraint firstAttribute="trailing" secondItem="uN4-wt-eMd" secondAttribute="trailing" id="N9t-5Z-QgL"/>
+                            <constraint firstAttribute="bottom" secondItem="oEN-ZL-Iyc" secondAttribute="bottom" id="XFh-Nf-ZLv"/>
+                            <constraint firstItem="uN4-wt-eMd" firstAttribute="leading" secondItem="oEN-ZL-Iyc" secondAttribute="leading" id="ccx-wB-vDU"/>
+                            <constraint firstItem="uN4-wt-eMd" firstAttribute="centerY" secondItem="kh9-bI-dsS" secondAttribute="centerY" id="mxr-bS-pA3"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="8zV-jS-oJU"/>
+                    <navigationItem key="navigationItem" title="Easy Launch" id="8zV-jS-oJU">
+                        <barButtonItem key="leftBarButtonItem" image="settings-32.png" id="zgg-Jc-hoX">
+                            <connections>
+                                <segue destination="4ey-0y-7se" kind="modal" modalTransitionStyle="coverVertical" id="svI-cc-Vw0"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" image="upload_to_cloud_filled-32.png" id="lWH-No-twg">
+                            <connections>
+                                <segue destination="6Ti-on-TVj" kind="push" identifier="Send" id="Nzp-X3-mpX"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="imageView" destination="uN4-wt-eMd" id="BSW-xX-caN"/>
                         <outlet property="markButton" destination="E0h-1O-MwI" id="JHr-GX-d0l"/>
@@ -78,12 +98,54 @@
             </objects>
             <point key="canvasLocation" x="201" y="25"/>
         </scene>
+        <!--New Informations-->
+        <scene sceneID="lf6-LA-hVU">
+            <objects>
+                <viewController id="6Ti-on-TVj" userLabel="New Informations" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="T3z-4L-HLE"/>
+                        <viewControllerLayoutGuide type="bottom" id="aJT-p1-sC6"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="qzd-Mi-s8k">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="New Informations" id="rY8-1F-eZ5">
+                        <barButtonItem key="rightBarButtonItem" image="sent-32.png" id="WCs-Hb-A8j"/>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="70U-kb-ji0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="733" y="-168"/>
+        </scene>
+        <!--Settings-->
+        <scene sceneID="kUf-Bz-4aa">
+            <objects>
+                <viewController id="4ey-0y-7se" userLabel="Settings" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="SWY-RB-NOT"/>
+                        <viewControllerLayoutGuide type="bottom" id="Smb-g4-kKz"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="b0Y-NT-FTq">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XUk-r5-dfF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="736" y="494"/>
+        </scene>
     </scenes>
     <resources>
         <image name="eraser-32.png" width="32" height="32"/>
         <image name="marker_pen-32.png" width="32" height="32"/>
+        <image name="sent-32.png" width="32" height="32"/>
+        <image name="settings-32.png" width="32" height="32"/>
         <image name="slr_camera2-32.png" width="32" height="32"/>
         <image name="stack_of_photos-32.png" width="32" height="32"/>
+        <image name="upload_to_cloud_filled-32.png" width="32" height="32"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
