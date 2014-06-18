@@ -41,8 +41,8 @@ UIButton *button;
     // Validate if it has a camera
     if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
         
-        UIAlertView *myAlertView = [[UIAlertView alloc] initWithTitle:@"Error"
-                                                              message:@"Device has no camera"
+        UIAlertView *myAlertView = [[UIAlertView alloc] initWithTitle:@"Erro"
+                                                              message:@"câmera não encontrada"
                                                              delegate:nil
                                                     cancelButtonTitle:@"OK"
                                                     otherButtonTitles: nil];
@@ -72,8 +72,8 @@ UIButton *button;
     UIView *buttonView=[[event.allTouches anyObject] view];
     CGRect buttonFrame=[buttonView convertRect:buttonView.frame toView:self.view];
     
-    UIMenuItem *menuItemRedColor = [[UIMenuItem alloc] initWithTitle:@"Red" action:@selector(redMark:)];
-    UIMenuItem *menuItemGreenColor = [[UIMenuItem alloc] initWithTitle:@"Green" action:@selector(greenMark:)];
+    UIMenuItem *menuItemRedColor = [[UIMenuItem alloc] initWithTitle:@"Saiu" action:@selector(redMark:)];
+    UIMenuItem *menuItemGreenColor = [[UIMenuItem alloc] initWithTitle:@"Entrou" action:@selector(greenMark:)];
     
     UIMenuController *menu = [UIMenuController sharedMenuController];
     
@@ -152,8 +152,8 @@ UIButton *button;
 {
     // Validate if a color was selected
     if (!redEnabled && !greenEnbaled) {
-        UIAlertView *alertColor = [[UIAlertView alloc] initWithTitle:@"Error"
-                                                             message:@"color not selected"
+        UIAlertView *alertColor = [[UIAlertView alloc] initWithTitle:@"Erro"
+                                                             message:@"cor não selecionada"
                                                             delegate:nil
                                                    cancelButtonTitle:@"OK"
                                                    otherButtonTitles:nil];
@@ -169,8 +169,8 @@ UIButton *button;
 {
     // Validate if a color was selected
     if (!redEnabled && !greenEnbaled) {
-        UIAlertView *alertColor = [[UIAlertView alloc] initWithTitle:@"Error"
-                                                             message:@"color not selected"
+        UIAlertView *alertColor = [[UIAlertView alloc] initWithTitle:@"Erro"
+                                                             message:@"cor não selecionada"
                                                             delegate:nil
                                                    cancelButtonTitle:@"OK"
                                                    otherButtonTitles:nil];

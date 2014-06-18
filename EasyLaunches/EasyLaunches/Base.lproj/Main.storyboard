@@ -76,7 +76,7 @@
                             <constraint firstItem="uN4-wt-eMd" firstAttribute="centerY" secondItem="kh9-bI-dsS" secondAttribute="centerY" id="mxr-bS-pA3"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Easy Launch" id="8zV-jS-oJU">
+                    <navigationItem key="navigationItem" title="Easy Launches" id="8zV-jS-oJU">
                         <barButtonItem key="leftBarButtonItem" image="settings-32.png" id="zgg-Jc-hoX">
                             <connections>
                                 <segue destination="4ey-0y-7se" kind="modal" modalTransitionStyle="coverVertical" id="svI-cc-Vw0"/>
@@ -111,7 +111,8 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="New Informations" id="rY8-1F-eZ5">
+                    <navigationItem key="navigationItem" title="Dados Processados" id="rY8-1F-eZ5">
+                        <barButtonItem key="backBarButtonItem" title="Cancelar" id="81x-wo-kOk"/>
                         <barButtonItem key="rightBarButtonItem" image="sent-32.png" id="WCs-Hb-A8j"/>
                     </navigationItem>
                 </viewController>
@@ -122,17 +123,7 @@
         <!--Settings-->
         <scene sceneID="kUf-Bz-4aa">
             <objects>
-                <viewController id="4ey-0y-7se" userLabel="Settings" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="SWY-RB-NOT"/>
-                        <viewControllerLayoutGuide type="bottom" id="Smb-g4-kKz"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="b0Y-NT-FTq">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
+                <viewController id="4ey-0y-7se" userLabel="Settings" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XUk-r5-dfF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="736" y="494"/>
