@@ -222,6 +222,7 @@ UIButton *button;
     CGImageRef croppedImage = CGImageCreateWithImageInRect([myImage CGImage], cropRect);
     
     brush /= 2;
+    
     // Leonn, abaixo está um código que irá setar a imagem recortada. No entanto, não devemos setar e sim salvar em alguma estrutura.
     // o tempo acabou aqui e preciso ir embora, caso contrário o Braga me esgana, senão eu faria e terminaria. O corte está perfeito, não mude nada kkkk.
     //O que falta é salvar as imagens. Procure uma estrutura que salve os recortes e pronto. Observe que o tipo UIImage não pega o tipo CGImageRef,

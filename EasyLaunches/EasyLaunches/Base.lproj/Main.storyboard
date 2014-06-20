@@ -96,7 +96,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="273" y="41"/>
+            <point key="canvasLocation" x="273" y="25"/>
         </scene>
         <!--New Informations-->
         <scene sceneID="lf6-LA-hVU">
@@ -189,7 +189,7 @@
         <image name="stack_of_photos-32.png" width="32" height="32"/>
         <image name="upload_to_cloud_filled-32.png" width="32" height="32"/>
     </resources>
-    <color key="tintColor" red="0.76108186141304346" green="0.63253763674298968" blue="0.3575343568875089" alpha="1" colorSpace="calibratedRGB"/>
+    <color key="tintColor" red="0.0" green="0.50196081399917603" blue="0.50196081399917603" alpha="1" colorSpace="calibratedRGB"/>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
