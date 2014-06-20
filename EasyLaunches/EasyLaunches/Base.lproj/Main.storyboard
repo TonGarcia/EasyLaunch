@@ -154,7 +154,7 @@
                     <navigationItem key="navigationItem" title="Root View Controller" id="Dle-ra-6eQ">
                         <barButtonItem key="rightBarButtonItem" title="Ok" id="zCk-S2-lxI">
                             <connections>
-                                <segue destination="fO0-aS-jaD" kind="modal" modalTransitionStyle="coverVertical" id="iDd-bw-Jxt"/>
+                                <segue destination="fO0-aS-jaD" kind="modal" modalTransitionStyle="crossDissolve" id="iDd-bw-Jxt"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
