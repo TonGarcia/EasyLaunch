@@ -5,54 +5,46 @@
 	<key>PreferenceSpecifiers</key>
 	<array>
 		<dict>
-			<key>Title</key>
-			<string>Group</string>
 			<key>Type</key>
-			<string>PSGroupSpecifier</string>
+			<string>PSMultiValueSpecifier</string>
+			<key>Title</key>
+			<string>Gerenciador financeiro:</string>
+			<key>Key</key>
+			<string>manager</string>
+			<key>Titles</key>
+			<array>
+				<string>Zero Paper</string>
+				<string>Conta Azul</string>
+			</array>
+			<key>Values</key>
+			<array>
+				<string>ZeroPaper</string>
+				<string>ContaAzul</string>
+			</array>
 		</dict>
 		<dict>
-			<key>AutocapitalizationType</key>
-			<string>None</string>
-			<key>AutocorrectionType</key>
-			<string>No</string>
-			<key>DefaultValue</key>
-			<string></string>
 			<key>IsSecure</key>
 			<false/>
 			<key>Key</key>
-			<string>name_preference</string>
+			<string>email</string>
 			<key>KeyboardType</key>
 			<string>Alphabet</string>
 			<key>Title</key>
-			<string>Name</string>
+			<string>Email:</string>
 			<key>Type</key>
 			<string>PSTextFieldSpecifier</string>
 		</dict>
 		<dict>
-			<key>DefaultValue</key>
+			<key>IsSecure</key>
 			<true/>
 			<key>Key</key>
-			<string>enabled_preference</string>
+			<string>pass</string>
+			<key>KeyboardType</key>
+			<string>Alphabet</string>
 			<key>Title</key>
-			<string>Enabled</string>
+			<string>Senha:</string>
 			<key>Type</key>
-			<string>PSToggleSwitchSpecifier</string>
-		</dict>
-		<dict>
-			<key>DefaultValue</key>
-			<real>0.5</real>
-			<key>Key</key>
-			<string>slider_preference</string>
-			<key>MaximumValue</key>
-			<integer>1</integer>
-			<key>MaximumValueImage</key>
-			<string></string>
-			<key>MinimumValue</key>
-			<integer>0</integer>
-			<key>MinimumValueImage</key>
-			<string></string>
-			<key>Type</key>
-			<string>PSSliderSpecifier</string>
+			<string>PSTextFieldSpecifier</string>
 		</dict>
 	</array>
 	<key>StringsTable</key>
