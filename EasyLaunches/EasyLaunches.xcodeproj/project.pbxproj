@@ -24,6 +24,7 @@
 		075A2F73193D1DB6002E8926 /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 075A2F72193D1DB6002E8926 /* opencv2.framework */; };
 		075A2F75193DF197002E8926 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 075A2F74193DF197002E8926 /* AudioToolbox.framework */; };
 		07EC69BD1954D36100060743 /* ELTransaction.m in Sources */ = {isa = PBXBuildFile; fileRef = 07EC69BC1954D36100060743 /* ELTransaction.m */; };
+		07EC69C01954F00B00060743 /* ELWSConnector.m in Sources */ = {isa = PBXBuildFile; fileRef = 07EC69BF1954F00B00060743 /* ELWSConnector.m */; };
 		9377E56719490B4600E9A2FA /* settings-32.png in Resources */ = {isa = PBXBuildFile; fileRef = 9377E56519490B4600E9A2FA /* settings-32.png */; };
 		9377E56819490B4600E9A2FA /* upload_to_cloud_filled-32.png in Resources */ = {isa = PBXBuildFile; fileRef = 9377E56619490B4600E9A2FA /* upload_to_cloud_filled-32.png */; };
 		AEDCF7AF1941084300546D00 /* eraser-32.png in Resources */ = {isa = PBXBuildFile; fileRef = AEDCF7AB1941084300546D00 /* eraser-32.png */; };
@@ -91,6 +92,8 @@
 		075A2F76193DF197002E8926 /* EasyLaunches.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = EasyLaunches.entitlements; sourceTree = "<group>"; };
 		07EC69BB1954D36100060743 /* ELTransaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELTransaction.h; sourceTree = "<group>"; };
 		07EC69BC1954D36100060743 /* ELTransaction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELTransaction.m; sourceTree = "<group>"; };
+		07EC69BE1954F00B00060743 /* ELWSConnector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELWSConnector.h; sourceTree = "<group>"; };
+		07EC69BF1954F00B00060743 /* ELWSConnector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELWSConnector.m; sourceTree = "<group>"; };
 		9377E56519490B4600E9A2FA /* settings-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings-32.png"; sourceTree = "<group>"; };
 		9377E56619490B4600E9A2FA /* upload_to_cloud_filled-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "upload_to_cloud_filled-32.png"; sourceTree = "<group>"; };
 		AEDCF7AB1941084300546D00 /* eraser-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "eraser-32.png"; sourceTree = "<group>"; };
@@ -219,6 +222,8 @@
 			children = (
 				075A2F76193DF197002E8926 /* EasyLaunches.entitlements */,
 				AEDCF7D9194B90D700546D00 /* ELCvView.h */,
+				07EC69BE1954F00B00060743 /* ELWSConnector.h */,
+				07EC69BF1954F00B00060743 /* ELWSConnector.m */,
 				07EC69BB1954D36100060743 /* ELTransaction.h */,
 				07EC69BC1954D36100060743 /* ELTransaction.m */,
 				AEDCF7DA194B90D700546D00 /* ELCvView.mm */,
@@ -441,6 +446,7 @@
 				075A2F54193D1D8C002E8926 /* ELViewController.mm in Sources */,
 				AEDCF80B1954993C00546D00 /* IASKSlider.m in Sources */,
 				AEDCF8061954993C00546D00 /* IASKSettingsStoreUserDefaults.m in Sources */,
+				07EC69C01954F00B00060743 /* ELWSConnector.m in Sources */,
 				AEDCF8021954993C00546D00 /* IASKSpecifierValuesViewController.m in Sources */,
 				075A2F4A193D1D8C002E8926 /* main.m in Sources */,
 				AEDCF80C1954993C00546D00 /* IASKSwitch.m in Sources */,

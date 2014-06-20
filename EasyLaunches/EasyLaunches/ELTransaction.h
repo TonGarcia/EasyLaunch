@@ -15,5 +15,5 @@
 
     - (id)initWithValue:(NSString *)value AndDate:(NSString *)date AndInvolvedPerson:(NSString *) involvedPerson;
 
-    + (NSString*) toJSON;
+    - (NSString*) toJSON;
 @end

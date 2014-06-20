@@ -23,9 +23,15 @@
     return self;
 }
 
-+ (NSString*) toJSON
+- (NSString*) toJSON
 {
-    
-    return @"";
+    NSDictionary *thisTransaction = [
+                                        NSDictionary dictionaryWithObjectsAndKeys:
+                                        @"value", _value,
+                                        @"date", _date,
+                                        @"involved_person", _involvedPerson,
+                                        nil
+                                     ];
+    return [thisTransaction JSONRepresentation];
 }
 @end
