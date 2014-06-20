@@ -11,6 +11,8 @@
 #import <opencv2/imgproc/imgproc.hpp>
 #import <opencv2/ml/ml.hpp>
 
+#import "IASKAppSettingsViewController.h"
+
 using namespace cv;
 
 @interface ELViewController : UIViewController <UIImagePickerControllerDelegate,

@@ -79,7 +79,7 @@
                     <navigationItem key="navigationItem" title="Easy Launches" id="8zV-jS-oJU">
                         <barButtonItem key="leftBarButtonItem" image="settings-32.png" id="zgg-Jc-hoX">
                             <connections>
-                                <segue destination="4ey-0y-7se" kind="modal" modalTransitionStyle="coverVertical" id="svI-cc-Vw0"/>
+                                <segue destination="u26-Eq-ahD" kind="modal" id="yOF-EE-o0v"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="upload_to_cloud_filled-32.png" id="lWH-No-twg">
@@ -120,13 +120,52 @@
             </objects>
             <point key="canvasLocation" x="733" y="-168"/>
         </scene>
-        <!--Settings-->
-        <scene sceneID="kUf-Bz-4aa">
+        <!--App Settings View Controller - Root View Controller-->
+        <scene sceneID="koL-36-vnx">
             <objects>
-                <viewController id="4ey-0y-7se" userLabel="Settings" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="XUk-r5-dfF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XQF-zm-oIJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tableViewController id="xRg-Uw-N9g" customClass="IASKAppSettingsViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="ykA-QY-ME1">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="qWn-ns-3az">
+                                <rect key="frame" x="0.0" y="119" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qWn-ns-3az" id="RA0-YM-6GC">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="xRg-Uw-N9g" id="hV4-la-v1x"/>
+                            <outlet property="delegate" destination="xRg-Uw-N9g" id="nM4-Gd-Uc1"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Root View Controller" id="Dle-ra-6eQ">
+                        <barButtonItem key="rightBarButtonItem" title="Ok" id="zCk-S2-lxI"/>
+                    </navigationItem>
+                </tableViewController>
             </objects>
-            <point key="canvasLocation" x="736" y="494"/>
+            <point key="canvasLocation" x="1295" y="563"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="8GX-CQ-QNz">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DCd-f6-f12" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationController definesPresentationContext="YES" id="u26-Eq-ahD" sceneMemberID="viewController">
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="FRj-MC-3hg">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="xRg-Uw-N9g" kind="relationship" relationship="rootViewController" id="2AD-uJ-Bvn"/>
+                    </connections>
+                </navigationController>
+            </objects>
+            <point key="canvasLocation" x="733" y="563"/>
         </scene>
     </scenes>
     <resources>
