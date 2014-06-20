@@ -104,9 +104,9 @@ UIButton *button;
 {
     greenEnbaled = YES;
     redEnabled = NO;
-    red=88/255.0;
-    green=181/255.0;
-    blue=73/255.0;
+    red=0/255.0;
+    green=168/255.0;
+    blue=89/255.0;
     markButton.tintColor = [UIColor colorWithRed:red green:green blue:blue alpha:1];
 }
 
