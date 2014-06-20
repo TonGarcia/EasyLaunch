@@ -42,18 +42,6 @@ UIButton *button;
 //    UIBarButtonItem *rightButton = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"upload_to_cloud_filled-32.png"] style:UIBarButtonItemStyleDone target:self action:@selector(sendImages)];
 //    self.navigationItem.rightBarButtonItem = rightButton;
     
-    // Validate if it has a camera
-    if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
-        
-        UIAlertView *myAlertView = [[UIAlertView alloc] initWithTitle:@"Erro"
-                                                              message:@"câmera não encontrada"
-                                                             delegate:nil
-                                                    cancelButtonTitle:@"OK"
-                                                    otherButtonTitles: nil];
-        
-        [myAlertView show];
-    }
-    
     // initialize crop area
     smallerPointX = imageView.frame.size.width;
     smallerPointY = imageView.frame.size.height;
@@ -256,6 +244,21 @@ UIButton *button;
 
 // Call the camera to take the photo
 - (IBAction)takePhoto:(id)sender {
+    
+    // Validate if it has a camera
+    if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+        
+        UIAlertView *myAlertView = [[UIAlertView alloc] initWithTitle:@"Erro"
+                                                              message:@"câmera não encontrada"
+                                                             delegate:nil
+                                                    cancelButtonTitle:@"OK"
+                                                    otherButtonTitles: nil];
+        
+        [myAlertView show];
+        
+        return;
+    }
+    
     UIImagePickerController *picker = [[UIImagePickerController alloc] init];
     picker.delegate = self;
     picker.allowsEditing = YES;
