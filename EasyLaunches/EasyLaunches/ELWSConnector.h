@@ -9,5 +9,5 @@
 #import <Foundation/Foundation.h>
 
 @interface ELWSConnector : NSObject
-    + (NSString*) postTransaction;
+    + (NSString*) postTransaction:(NSString*)json;
 @end
