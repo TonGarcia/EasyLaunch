@@ -96,7 +96,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="201" y="25"/>
+            <point key="canvasLocation" x="273" y="41"/>
         </scene>
         <!--New Informations-->
         <scene sceneID="lf6-LA-hVU">
@@ -118,12 +118,11 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="70U-kb-ji0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="733" y="-168"/>
+            <point key="canvasLocation" x="957" y="-536"/>
         </scene>
         <!--App Settings View Controller - Root View Controller-->
         <scene sceneID="koL-36-vnx">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="XQF-zm-oIJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="xRg-Uw-N9g" customClass="IASKAppSettingsViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="ykA-QY-ME1">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -145,17 +144,22 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Root View Controller" id="Dle-ra-6eQ">
-                        <barButtonItem key="rightBarButtonItem" title="Ok" id="zCk-S2-lxI"/>
+                        <barButtonItem key="rightBarButtonItem" title="Ok" id="zCk-S2-lxI">
+                            <connections>
+                                <segue destination="fO0-aS-jaD" kind="modal" modalTransitionStyle="coverVertical" id="iDd-bw-Jxt"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XQF-zm-oIJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1295" y="563"/>
+            <point key="canvasLocation" x="1767" y="323"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Settings Navigation-->
         <scene sceneID="8GX-CQ-QNz">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DCd-f6-f12" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <navigationController definesPresentationContext="YES" id="u26-Eq-ahD" sceneMemberID="viewController">
+                <navigationController definesPresentationContext="YES" id="u26-Eq-ahD" userLabel="Settings Navigation" sceneMemberID="viewController">
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="FRj-MC-3hg">
                         <autoresizingMask key="autoresizingMask"/>
@@ -165,7 +169,7 @@
                     </connections>
                 </navigationController>
             </objects>
-            <point key="canvasLocation" x="733" y="563"/>
+            <point key="canvasLocation" x="957" y="803"/>
         </scene>
     </scenes>
     <resources>

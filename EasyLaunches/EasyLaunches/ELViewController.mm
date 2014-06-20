@@ -28,6 +28,9 @@ UIButton *button;
 {
     [super viewDidLoad];
     
+//    UIBarButtonItem *rightButton = [[UIBarButtonItem alloc]initWithTitle:@"Ok" style:UIBarButtonItemStyleDone target:self action:@selector(backHomeView:)];
+//    self.navigationItem.rightBarButtonItem = rightButton;
+    
     //Configurando Navigation Controller
     
     // Left Button
