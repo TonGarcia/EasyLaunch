@@ -189,6 +189,7 @@
         <image name="stack_of_photos-32.png" width="32" height="32"/>
         <image name="upload_to_cloud_filled-32.png" width="32" height="32"/>
     </resources>
+    <color key="tintColor" red="0.76108186141304346" green="0.63253763674298968" blue="0.3575343568875089" alpha="1" colorSpace="calibratedRGB"/>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
