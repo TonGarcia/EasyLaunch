@@ -25,6 +25,10 @@
 		075A2F75193DF197002E8926 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 075A2F74193DF197002E8926 /* AudioToolbox.framework */; };
 		07EC69BD1954D36100060743 /* ELTransaction.m in Sources */ = {isa = PBXBuildFile; fileRef = 07EC69BC1954D36100060743 /* ELTransaction.m */; };
 		07EC69C01954F00B00060743 /* ELWSConnector.m in Sources */ = {isa = PBXBuildFile; fileRef = 07EC69BF1954F00B00060743 /* ELWSConnector.m */; };
+		07EC69C21955D6B200060743 /* edit-32.png in Resources */ = {isa = PBXBuildFile; fileRef = 07EC69C11955D6B200060743 /* edit-32.png */; };
+		07EC69C31955D6B200060743 /* edit-32.png in Resources */ = {isa = PBXBuildFile; fileRef = 07EC69C11955D6B200060743 /* edit-32.png */; };
+		07EC69CA1955E0E400060743 /* ELSendToCloudViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07EC69C91955E0E400060743 /* ELSendToCloudViewController.m */; };
+		07EC69CB1955E0E400060743 /* ELSendToCloudViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07EC69C91955E0E400060743 /* ELSendToCloudViewController.m */; };
 		9377E56719490B4600E9A2FA /* settings-32.png in Resources */ = {isa = PBXBuildFile; fileRef = 9377E56519490B4600E9A2FA /* settings-32.png */; };
 		9377E56819490B4600E9A2FA /* upload_to_cloud_filled-32.png in Resources */ = {isa = PBXBuildFile; fileRef = 9377E56619490B4600E9A2FA /* upload_to_cloud_filled-32.png */; };
 		AEDCF7AF1941084300546D00 /* eraser-32.png in Resources */ = {isa = PBXBuildFile; fileRef = AEDCF7AB1941084300546D00 /* eraser-32.png */; };
@@ -94,6 +98,9 @@
 		07EC69BC1954D36100060743 /* ELTransaction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELTransaction.m; sourceTree = "<group>"; };
 		07EC69BE1954F00B00060743 /* ELWSConnector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELWSConnector.h; sourceTree = "<group>"; };
 		07EC69BF1954F00B00060743 /* ELWSConnector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELWSConnector.m; sourceTree = "<group>"; };
+		07EC69C11955D6B200060743 /* edit-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "edit-32.png"; path = "../edit-32.png"; sourceTree = "<group>"; };
+		07EC69C81955E0E400060743 /* ELSendToCloudViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELSendToCloudViewController.h; sourceTree = "<group>"; };
+		07EC69C91955E0E400060743 /* ELSendToCloudViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELSendToCloudViewController.m; sourceTree = "<group>"; };
 		9377E56519490B4600E9A2FA /* settings-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings-32.png"; sourceTree = "<group>"; };
 		9377E56619490B4600E9A2FA /* upload_to_cloud_filled-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "upload_to_cloud_filled-32.png"; sourceTree = "<group>"; };
 		AEDCF7AB1941084300546D00 /* eraser-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "eraser-32.png"; sourceTree = "<group>"; };
@@ -139,7 +146,7 @@
 		AEDCF7FE1954993C00546D00 /* IASKTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IASKTextField.h; sourceTree = "<group>"; };
 		AEDCF7FF1954993C00546D00 /* IASKTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IASKTextField.m; sourceTree = "<group>"; };
 		AEDCF80E1954997900546D00 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
-		AEDCF81019549A8200546D00 /* sent-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "sent-32.png"; path = "EasyLaunches/sent-32.png"; sourceTree = "<group>"; };
+		AEDCF81019549A8200546D00 /* sent-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sent-32.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -178,7 +185,6 @@
 		075A2F31193D1D8C002E8926 = {
 			isa = PBXGroup;
 			children = (
-				AEDCF81019549A8200546D00 /* sent-32.png */,
 				AEDCF80E1954997900546D00 /* Settings.bundle */,
 				AEDCF7DF1954993C00546D00 /* InAppSettingsKit */,
 				075A2F43193D1D8C002E8926 /* EasyLaunches */,
@@ -230,6 +236,8 @@
 				075A2F4C193D1D8C002E8926 /* ELAppDelegate.h */,
 				075A2F4D193D1D8C002E8926 /* ELAppDelegate.m */,
 				075A2F4F193D1D8C002E8926 /* Main.storyboard */,
+				07EC69C81955E0E400060743 /* ELSendToCloudViewController.h */,
+				07EC69C91955E0E400060743 /* ELSendToCloudViewController.m */,
 				075A2F52193D1D8C002E8926 /* ELViewController.h */,
 				075A2F53193D1D8C002E8926 /* ELViewController.mm */,
 				075A2F55193D1D8C002E8926 /* Images.xcassets */,
@@ -247,6 +255,8 @@
 				AEDCF7AC1941084300546D00 /* marker_pen-32.png */,
 				AEDCF7AD1941084300546D00 /* slr_camera2-32.png */,
 				AEDCF7AE1941084300546D00 /* stack_of_photos-32.png */,
+				AEDCF81019549A8200546D00 /* sent-32.png */,
+				07EC69C11955D6B200060743 /* edit-32.png */,
 				075A2F45193D1D8C002E8926 /* EasyLaunches-Info.plist */,
 				075A2F46193D1D8C002E8926 /* InfoPlist.strings */,
 				075A2F49193D1D8C002E8926 /* main.m */,
@@ -381,9 +391,6 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = EasyLaunches;
 				TargetAttributes = {
-					075A2F39193D1D8C002E8926 = {
-						DevelopmentTeam = A9GRUT7L2F;
-					};
 					075A2F5A193D1D8C002E8926 = {
 						TestTargetID = 075A2F39193D1D8C002E8926;
 					};
@@ -419,6 +426,7 @@
 				AEDCF7B01941084300546D00 /* marker_pen-32.png in Resources */,
 				AEDCF7AF1941084300546D00 /* eraser-32.png in Resources */,
 				AEDCF81119549A8200546D00 /* sent-32.png in Resources */,
+				07EC69C21955D6B200060743 /* edit-32.png in Resources */,
 				9377E56819490B4600E9A2FA /* upload_to_cloud_filled-32.png in Resources */,
 				AEDCF7B21941084300546D00 /* stack_of_photos-32.png in Resources */,
 				9377E56719490B4600E9A2FA /* settings-32.png in Resources */,
@@ -431,6 +439,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				07EC69C31955D6B200060743 /* edit-32.png in Resources */,
 				075A2F67193D1D8C002E8926 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -462,6 +471,7 @@
 				AEDCF80D1954993C00546D00 /* IASKTextField.m in Sources */,
 				AEDCF8091954993C00546D00 /* IASKPSTextFieldSpecifierViewCell.m in Sources */,
 				075A2F4E193D1D8C002E8926 /* ELAppDelegate.m in Sources */,
+				07EC69CA1955E0E400060743 /* ELSendToCloudViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -469,6 +479,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				07EC69CB1955E0E400060743 /* ELSendToCloudViewController.m in Sources */,
 				075A2F69193D1D8C002E8926 /* EasyLaunchesTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

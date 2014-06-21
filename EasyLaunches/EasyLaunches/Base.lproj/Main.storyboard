@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="fO0-aS-jaD">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="fO0-aS-jaD">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -23,19 +23,15 @@
         <scene sceneID="ufC-wZ-h7g">
             <objects>
                 <viewController id="vXZ-lx-hvc" userLabel="HomeView" customClass="ELViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="lPw-PR-LBC"/>
-                        <viewControllerLayoutGuide type="bottom" id="Q4A-E7-RNi"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uN4-wt-eMd">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="uN4-wt-eMd">
                                 <rect key="frame" x="0.0" y="108" width="320" height="352"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="oEN-ZL-Iyc">
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="center" id="oEN-ZL-Iyc">
                                 <rect key="frame" x="0.0" y="524" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items>
@@ -66,15 +62,6 @@
                             </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="oEN-ZL-Iyc" firstAttribute="trailing" secondItem="uN4-wt-eMd" secondAttribute="trailing" id="9D3-iv-QLn"/>
-                            <constraint firstItem="uN4-wt-eMd" firstAttribute="top" secondItem="lPw-PR-LBC" secondAttribute="bottom" constant="44" id="CqI-iR-dzT"/>
-                            <constraint firstItem="oEN-ZL-Iyc" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="EHT-3J-eog"/>
-                            <constraint firstAttribute="trailing" secondItem="uN4-wt-eMd" secondAttribute="trailing" id="N9t-5Z-QgL"/>
-                            <constraint firstAttribute="bottom" secondItem="oEN-ZL-Iyc" secondAttribute="bottom" id="XFh-Nf-ZLv"/>
-                            <constraint firstItem="uN4-wt-eMd" firstAttribute="leading" secondItem="oEN-ZL-Iyc" secondAttribute="leading" id="ccx-wB-vDU"/>
-                            <constraint firstItem="uN4-wt-eMd" firstAttribute="centerY" secondItem="kh9-bI-dsS" secondAttribute="centerY" id="mxr-bS-pA3"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Easy Launches" id="8zV-jS-oJU">
                         <barButtonItem key="leftBarButtonItem" image="settings-32.png" id="zgg-Jc-hoX">
@@ -82,9 +69,9 @@
                                 <segue destination="u26-Eq-ahD" kind="modal" id="yOF-EE-o0v"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" image="upload_to_cloud_filled-32.png" id="lWH-No-twg">
+                        <barButtonItem key="rightBarButtonItem" image="sent-32.png" id="lWH-No-twg">
                             <connections>
-                                <segue destination="6Ti-on-TVj" kind="push" identifier="Send" id="Nzp-X3-mpX"/>
+                                <segue destination="JKJ-Yg-QT5" kind="push" id="yqb-XC-zM5"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -98,35 +85,45 @@
             </objects>
             <point key="canvasLocation" x="273" y="25"/>
         </scene>
-        <!--New Informations-->
-        <scene sceneID="lf6-LA-hVU">
+        <!--Send To Cloud View Controller - Dados Processados-->
+        <scene sceneID="1Zy-97-5RS">
             <objects>
-                <viewController id="6Ti-on-TVj" userLabel="New Informations" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="T3z-4L-HLE"/>
-                        <viewControllerLayoutGuide type="bottom" id="aJT-p1-sC6"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="qzd-Mi-s8k">
+                <viewController id="JKJ-Yg-QT5" customClass="ELSendToCloudViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="fvB-iQ-Ezk">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Valor: 53,61" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k9p-00-X6W">
-                                <rect key="frame" x="20" y="103" width="91" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="0dQ-4p-dYU">
+                                <rect key="frame" x="0.0" y="514" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="DHz-Cu-WRQ"/>
+                                    <barButtonItem image="edit-32.png" id="SF0-dA-37c">
+                                        <connections>
+                                            <action selector="editValues:" destination="JKJ-Yg-QT5" id="Z2D-xm-mFu"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="QIA-5N-gv8"/>
+                                    <barButtonItem image="upload_to_cloud_filled-32.png" id="KyE-e3-bPT">
+                                        <connections>
+                                            <action selector="sendToCloud:" destination="JKJ-Yg-QT5" id="d0v-0Z-pdw"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="54U-E6-SOz"/>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Dados Processados" id="rY8-1F-eZ5">
-                        <barButtonItem key="backBarButtonItem" title="Cancelar" id="81x-wo-kOk"/>
-                        <barButtonItem key="rightBarButtonItem" image="sent-32.png" id="WCs-Hb-A8j"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Dados Processados" id="EAV-UL-4fl"/>
+                    <connections>
+                        <outlet property="editDatas" destination="SF0-dA-37c" id="0EB-Xy-Y0d"/>
+                        <outlet property="sendToCloud" destination="KyE-e3-bPT" id="Tbi-uK-7Ln"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="70U-kb-ji0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="g7U-ao-4XN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="957" y="-536"/>
+            <point key="canvasLocation" x="812" y="-416"/>
         </scene>
         <!--App Settings View Controller - Root View Controller-->
         <scene sceneID="koL-36-vnx">
@@ -181,6 +178,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="edit-32.png" width="32" height="32"/>
         <image name="eraser-32.png" width="32" height="32"/>
         <image name="marker_pen-32.png" width="32" height="32"/>
         <image name="sent-32.png" width="32" height="32"/>
