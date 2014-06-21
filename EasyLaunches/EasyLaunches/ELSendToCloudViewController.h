@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ELWSConnector.h"
 
 @interface ELSendToCloudViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *sendToCloud;

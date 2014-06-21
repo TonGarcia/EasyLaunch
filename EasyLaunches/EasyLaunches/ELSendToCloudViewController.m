@@ -37,7 +37,7 @@
 
 - (IBAction)sendToCloud:(id)sender
 {
-    NSLog(@"Send to Cloud yeye!");
+    [ELWSConnector postTransaction:@""];
 }
 
 - (IBAction)editValues:(id)sender

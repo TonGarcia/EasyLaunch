@@ -12,14 +12,16 @@
 + (NSString*) postTransaction:(NSString*)json
 {
     NSString* method = @"http://";
-    NSString* domain = @"192.168.0.6:3000";
+    NSString* domain = @"localhost:3000";
     NSString* route = @"/api/transactions";
+    NSString* action = @"/create";
     NSString* url = [
                      NSString stringWithFormat:
-                        @"%@%@%@",
+                        @"%@%@%@%@",
                         method,
                         domain,
-                        route
+                        route,
+                        action
                     ];
     
     
