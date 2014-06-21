@@ -11,5 +11,7 @@
 @interface ELAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
++ (NSMutableArray *) transactions;
++ (void) addTransactions:(NSString *)transaction;
 
 @end

@@ -9,6 +9,7 @@
 #import "ELAppDelegate.h"
 
 @implementation ELAppDelegate
+static NSMutableArray* transactions;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -43,4 +44,15 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
+// Return all the transactions on the App
++ (NSMutableArray *) transactions
+{
+    @synchronized(self) { return transactions; }
+}
+
+// Add a transaction o the App
++ (void) addTransactions:(NSString *)transaction
+{
+    @synchronized(self) { [transactions addObject:transaction]; }
+}
 @end
