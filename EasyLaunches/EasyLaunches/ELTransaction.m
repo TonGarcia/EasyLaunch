@@ -27,7 +27,7 @@
 {
     NSString *json = [
                         NSString stringWithFormat:
-                        @"{value:%@, date:%@, involved_person:%@}",
+                        @"{\"value\":\"%@\", \"date\":\"%@\", \"involved_person\":\"%@\"}",
                         _value,
                         _date,
                         _involvedPerson

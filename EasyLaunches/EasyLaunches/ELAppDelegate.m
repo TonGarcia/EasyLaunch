@@ -47,12 +47,18 @@ static NSMutableArray* transactions;
 // Return all the transactions on the App
 + (NSMutableArray *) transactions
 {
-    @synchronized(self) { return transactions; }
+    @synchronized(self) {
+        if(transactions == Nil) transactions = [[NSMutableArray alloc] init];
+        return transactions;
+    }
 }
 
 // Add a transaction o the App
 + (void) addTransactions:(NSString *)transaction
 {
-    @synchronized(self) { [transactions addObject:transaction]; }
+    @synchronized(self) {
+        [ELAppDelegate transactions];
+        [transactions addObject:transaction];
+    }
 }
 @end
