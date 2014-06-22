@@ -7,6 +7,7 @@
 //
 
 #import "ELViewController.h"
+#import "ELCvView.h"
 
 
 @interface ELViewController ()
@@ -229,6 +230,18 @@ UIButton *button;
     // veja abaixo como eu fiz pra unir os diferentes tipos.
     
     imageView.image = [UIImage imageWithCGImage:croppedImage];
+    
+    Mat mat= [ELCvView cvMatFromUIImage:imageView.image];
+    Mat img;
+    cvtColor(mat, img, COLOR_BGR2GRAY);
+    GaussianBlur(img, mat, cv::Size(5, 5), 2, 2);
+    adaptiveThreshold(mat, img, 255, 1, 1, 11, 2);
+    vector < vector<cv::Point> > contours;
+    findContours(img, contours, RETR_LIST, CHAIN_APPROX_SIMPLE);
+    NSLog(@"contours.size()%d",contours.size());
+    
+    UIImage *img2= [ELCvView UIImageFromCVMat:img];
+    imageView.image = img2;
     
     smallerPointX = imageView.frame.size.width;
     smallerPointY = imageView.frame.size.height;
