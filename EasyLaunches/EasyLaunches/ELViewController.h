@@ -26,6 +26,7 @@ using namespace cv;
     CGFloat brush;
     CGFloat opacity;
     UIImage *myImage;
+    UIImage *noPhoto;
     BOOL redEnabled;
     BOOL greenEnbaled;
     CALayer *layer;

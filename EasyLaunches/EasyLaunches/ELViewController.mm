@@ -43,6 +43,9 @@ UIButton *button;
 //    UIBarButtonItem *rightButton = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"upload_to_cloud_filled-32.png"] style:UIBarButtonItemStyleDone target:self action:@selector(sendImages)];
 //    self.navigationItem.rightBarButtonItem = rightButton;
     
+    noPhoto = [UIImage imageNamed:@"no-photo.jpeg"];
+    imageView.image = noPhoto;
+    
     // initialize crop area
     smallerPointX = imageView.frame.size.width;
     smallerPointY = imageView.frame.size.height;
@@ -143,10 +146,20 @@ UIButton *button;
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    // Validate if a color was selected
-    if (!redEnabled && !greenEnbaled) {
+    // validate if a photo not selected
+    if(imageView.image == noPhoto) {
         UIAlertView *alertColor = [[UIAlertView alloc] initWithTitle:@"Erro"
-                                                             message:@"cor não selecionada"
+                                                             message:@"Nenhuma foto foi selecionada"
+                                                            delegate:nil
+                                                   cancelButtonTitle:@"OK"
+                                                   otherButtonTitles:nil];
+        [alertColor show];
+    }
+    
+    // Validate if a color was selected
+    else if (!redEnabled && !greenEnbaled) {
+        UIAlertView *alertColor = [[UIAlertView alloc] initWithTitle:@"Erro"
+                                                             message:@"Cor não selecionada"
                                                             delegate:nil
                                                    cancelButtonTitle:@"OK"
                                                    otherButtonTitles:nil];
