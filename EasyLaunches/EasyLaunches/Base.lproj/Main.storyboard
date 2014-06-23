@@ -88,26 +88,19 @@
         <!--Send To Cloud View Controller - Dados Processados-->
         <scene sceneID="1Zy-97-5RS">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="g7U-ao-4XN" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="JKJ-Yg-QT5" customClass="ELSendToCloudViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fvB-iQ-Ezk">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="0dQ-4p-dYU">
-                                <rect key="frame" x="0.0" y="514" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="524" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="DHz-Cu-WRQ"/>
-                                    <barButtonItem image="edit-32.png" id="SF0-dA-37c">
+                                    <barButtonItem systemItem="edit" id="SF0-dA-37c">
                                         <connections>
                                             <action selector="editValues:" destination="JKJ-Yg-QT5" id="Z2D-xm-mFu"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="QIA-5N-gv8"/>
-                                    <barButtonItem image="upload_to_cloud_filled-32.png" id="KyE-e3-bPT">
-                                        <connections>
-                                            <action selector="sendToCloud:" destination="JKJ-Yg-QT5" id="d0v-0Z-pdw"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="54U-E6-SOz"/>
@@ -116,12 +109,19 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Dados Processados" id="EAV-UL-4fl"/>
+                    <navigationItem key="navigationItem" title="Dados Processados" id="EAV-UL-4fl">
+                        <barButtonItem key="rightBarButtonItem" image="upload_to_cloud_filled-32.png" id="KyE-e3-bPT">
+                            <connections>
+                                <action selector="sendToCloud:" destination="JKJ-Yg-QT5" id="d0v-0Z-pdw"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="editDatas" destination="SF0-dA-37c" id="0EB-Xy-Y0d"/>
                         <outlet property="sendToCloud" destination="KyE-e3-bPT" id="Tbi-uK-7Ln"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="g7U-ao-4XN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="812" y="-416"/>
         </scene>
@@ -178,7 +178,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="edit-32.png" width="32" height="32"/>
         <image name="eraser-32.png" width="32" height="32"/>
         <image name="marker_pen-32.png" width="32" height="32"/>
         <image name="sent-32.png" width="32" height="32"/>
