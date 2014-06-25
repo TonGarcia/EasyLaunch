@@ -70,10 +70,12 @@ UIButton *button;
     
     UIMenuItem *menuItemRedColor = [[UIMenuItem alloc] initWithTitle:@"Despesa" action:@selector(redMark:)];
     UIMenuItem *menuItemGreenColor = [[UIMenuItem alloc] initWithTitle:@"Receita" action:@selector(greenMark:)];
+
+    UIMenuItem *menuItemBlueColor = [[UIMenuItem alloc] initWithTitle:@"Info" action:@selector(blueMark:)];
     
     UIMenuController *menu = [UIMenuController sharedMenuController];
     
-    [menu setMenuItems:[NSArray arrayWithObjects:menuItemRedColor, menuItemGreenColor, nil]];
+    [menu setMenuItems:[NSArray arrayWithObjects:menuItemRedColor, menuItemGreenColor, menuItemBlueColor, nil]];
     
     [menu setTargetRect:buttonFrame inView:self.view];
     
@@ -88,7 +90,8 @@ UIButton *button;
 {
     BOOL result = NO;
     if(@selector(greenMark:) == action ||
-       @selector(redMark:) == action) {
+       @selector(redMark:) == action ||
+       @selector(blueMark:) == action) {
         result = YES;
     }
     return result;
@@ -111,6 +114,16 @@ UIButton *button;
     red=0/255.0;
     green=168/255.0;
     blue=89/255.0;
+    markButton.tintColor = [UIColor colorWithRed:red green:green blue:blue alpha:1];
+}
+
+- (void)blueMark:(id)sender
+{
+    greenEnbaled = YES;
+    redEnabled = NO;
+    red=0/255.0;
+    green=0/255.0;
+    blue=255/255.0;
     markButton.tintColor = [UIColor colorWithRed:red green:green blue:blue alpha:1];
 }
 
