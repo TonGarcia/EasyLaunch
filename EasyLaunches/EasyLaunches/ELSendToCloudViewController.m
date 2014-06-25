@@ -17,6 +17,7 @@
 @implementation ELSendToCloudViewController
 {
     NSArray *test;
+    BOOL check;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -57,6 +58,16 @@
     }
     
     cell.textLabel.text = [test objectAtIndex:indexPath.row];
+    
+    // code for test
+    if (check) {
+        cell.imageView.image = [UIImage imageNamed:@"red_circle.png"];
+        check = NO;
+    } else {
+        cell.imageView.image = [UIImage imageNamed:@"green_circle.png"];
+        check = YES;
+    }
+    
     return cell;
 }
 
