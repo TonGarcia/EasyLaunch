@@ -9,7 +9,6 @@
 #import "ELViewController.h"
 #import "ELCvView.h"
 
-
 @interface ELViewController ()
 
 @end
@@ -44,7 +43,8 @@ UIButton *button;
 //    self.navigationItem.rightBarButtonItem = rightButton;
     
     noPhoto = [UIImage imageNamed:@"no-photo.jpeg"];
-    imageView.image = noPhoto;
+    myImage = noPhoto;
+    [self setImageAndResizeUIImageView];
     
     // initialize crop area
     smallerPointX = imageView.frame.size.width;
@@ -68,8 +68,8 @@ UIButton *button;
     UIView *buttonView=[[event.allTouches anyObject] view];
     CGRect buttonFrame=[buttonView convertRect:buttonView.frame toView:self.view];
     
-    UIMenuItem *menuItemRedColor = [[UIMenuItem alloc] initWithTitle:@"Saiu" action:@selector(redMark:)];
-    UIMenuItem *menuItemGreenColor = [[UIMenuItem alloc] initWithTitle:@"Entrou" action:@selector(greenMark:)];
+    UIMenuItem *menuItemRedColor = [[UIMenuItem alloc] initWithTitle:@"Despesa" action:@selector(redMark:)];
+    UIMenuItem *menuItemGreenColor = [[UIMenuItem alloc] initWithTitle:@"Receita" action:@selector(greenMark:)];
     
     UIMenuController *menu = [UIMenuController sharedMenuController];
     
@@ -251,7 +251,7 @@ UIButton *button;
     adaptiveThreshold(mat, img, 255, 1, 1, 11, 2);
     vector < vector<cv::Point> > contours;
     findContours(img, contours, RETR_LIST, CHAIN_APPROX_SIMPLE);
-    NSLog(@"contours.size()%d",contours.size());
+    NSLog(@"contours.size()%lu",contours.size());
     
     UIImage *img2= [ELCvView UIImageFromCVMat:img];
     imageView.image = img2;

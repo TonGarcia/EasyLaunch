@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "ELWSConnector.h"
 
-@interface ELSendToCloudViewController : UIViewController
+@interface ELSendToCloudViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *sendToCloud;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *editDatas;
 
