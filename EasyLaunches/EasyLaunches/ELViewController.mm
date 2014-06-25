@@ -242,7 +242,7 @@ UIButton *button;
     //O que falta é salvar as imagens. Procure uma estrutura que salve os recortes e pronto. Observe que o tipo UIImage não pega o tipo CGImageRef,
     // veja abaixo como eu fiz pra unir os diferentes tipos.
     
-    imageView.image = [UIImage imageWithCGImage:croppedImage];
+    imageView.image = myImage;
     
     Mat mat= [ELCvView cvMatFromUIImage:imageView.image];
     Mat img;
@@ -251,10 +251,27 @@ UIButton *button;
     adaptiveThreshold(mat, img, 255, 1, 1, 11, 2);
     vector < vector<cv::Point> > contours;
     findContours(img, contours, RETR_LIST, CHAIN_APPROX_SIMPLE);
-    NSLog(@"contours.size()%lu",contours.size());
     
-    UIImage *img2= [ELCvView UIImageFromCVMat:img];
-    imageView.image = img2;
+    
+    NSString *message = [NSString stringWithFormat: @"Valores processados: %lu ",contours.size()];
+    
+    UIAlertView *toast = [[UIAlertView alloc] initWithTitle:nil
+                                                    message:message
+                                                   delegate:nil
+                                          cancelButtonTitle:nil
+                                          otherButtonTitles:nil, nil];
+    [toast show];
+    
+    int duration = 1; // duration in seconds
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, duration * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+        [toast dismissWithClickedButtonIndex:0 animated:YES];
+    });
+    
+    
+    
+   // UIImage *img2= [ELCvView UIImageFromCVMat:img];
+   // imageView.image = img2;
     
     smallerPointX = imageView.frame.size.width;
     smallerPointY = imageView.frame.size.height;
