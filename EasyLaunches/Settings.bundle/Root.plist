@@ -6,11 +6,17 @@
 	<array>
 		<dict>
 			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+			<key>Title</key>
+			<string>Configuração Principal</string>
+		</dict>
+		<dict>
+			<key>Type</key>
 			<string>PSMultiValueSpecifier</string>
 			<key>Title</key>
 			<string>Gerenciador financeiro:</string>
 			<key>Key</key>
-			<string>manager</string>
+			<string>fmanager</string>
 			<key>Titles</key>
 			<array>
 				<string>Zero Paper</string>
@@ -18,13 +24,11 @@
 			</array>
 			<key>Values</key>
 			<array>
-				<string>ZeroPaper</string>
-				<string>ContaAzul</string>
+				<string>zp</string>
+				<string>ca</string>
 			</array>
 		</dict>
 		<dict>
-			<key>IsSecure</key>
-			<false/>
 			<key>Key</key>
 			<string>email</string>
 			<key>KeyboardType</key>
