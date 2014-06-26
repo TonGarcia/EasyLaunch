@@ -257,7 +257,7 @@ UIButton *button;
     
     imageView.image = myImage;
     
-    Mat mat= [ELCvView cvMatFromUIImage:imageView.image];
+    Mat mat= [ELCvView cvMatFromUIImage:[UIImage imageWithCGImage:croppedImage]];
     Mat img;
     cvtColor(mat, img, COLOR_BGR2GRAY);
     GaussianBlur(img, mat, cv::Size(5, 5), 2, 2);
