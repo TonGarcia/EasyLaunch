@@ -14,6 +14,7 @@ static NSMutableArray* transactions;
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    [self registerFinancialManagers];
     return YES;
 }
 							
@@ -60,5 +61,27 @@ static NSMutableArray* transactions;
         [ELAppDelegate transactions];
         [transactions addObject:transaction];
     }
+}
+
+- (void) registerFinancialManagers
+{
+    NSLog(@"FinancialManagers registrations just Started!");
+    NSString *settingsBundle = [[NSBundle mainBundle] pathForResource:@"Settings" ofType:@"bundle"];
+    
+    if(!settingsBundle)
+    {
+        NSLog(@"Could not find Settings.bundle");
+        return;
+    }
+    
+    NSDictionary *settings = [NSDictionary dictionaryWithContentsOfFile:[settingsBundle stringByAppendingPathComponent:@"Root.plist"]];
+    
+    
+    for(NSString *key in [settings allKeys]) {
+        NSLog(@"%@",[settings objectForKey:key]);
+    }
+    
+
+    NSLog(@"manager on Plist: %@", [[settings objectForKey:@"PreferenceSpecifiers"] objectAtIndex:0]);
 }
 @end
