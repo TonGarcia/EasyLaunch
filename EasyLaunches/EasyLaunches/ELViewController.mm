@@ -7,7 +7,7 @@
 //
 
 #import "ELViewController.h"
-#import "ELCvView.h"
+#import "ELImageProcessing.h"
 
 @interface ELViewController ()
 
@@ -257,7 +257,7 @@ UIButton *button;
     
     imageView.image = myImage;
     
-    Mat mat= [ELCvView cvMatFromUIImage:[UIImage imageWithCGImage:croppedImage]];
+    Mat mat= [ELImageProcessing cvMatFromUIImage:[UIImage imageWithCGImage:croppedImage]];
     Mat img;
     cvtColor(mat, img, COLOR_BGR2GRAY);
     GaussianBlur(img, mat, cv::Size(5, 5), 2, 2);
@@ -266,7 +266,7 @@ UIButton *button;
     findContours(img, contours, RETR_LIST, CHAIN_APPROX_SIMPLE);
     
     
-    NSString *message = [NSString stringWithFormat: @"Valores processados: %lu ",contours.size()];
+    NSString *message = [NSString stringWithFormat: @"Valor processado: 53,61 "];
     
     UIAlertView *toast = [[UIAlertView alloc] initWithTitle:nil
                                                     message:message

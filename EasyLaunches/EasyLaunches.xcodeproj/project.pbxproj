@@ -44,7 +44,7 @@
 		AEDCF7D6194B8AAE00546D00 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AEDCF7D3194B8AAE00546D00 /* CoreMedia.framework */; };
 		AEDCF7D7194B8AAE00546D00 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AEDCF7D4194B8AAE00546D00 /* CoreVideo.framework */; };
 		AEDCF7D8194B8AAE00546D00 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AEDCF7D5194B8AAE00546D00 /* QuartzCore.framework */; };
-		AEDCF7DB194B90D700546D00 /* ELCvView.mm in Sources */ = {isa = PBXBuildFile; fileRef = AEDCF7DA194B90D700546D00 /* ELCvView.mm */; };
+		AEDCF7DB194B90D700546D00 /* ELImageProcessing.mm in Sources */ = {isa = PBXBuildFile; fileRef = AEDCF7DA194B90D700546D00 /* ELImageProcessing.mm */; };
 		AEDCF8001954993C00546D00 /* IASKAppSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AEDCF7E21954993C00546D00 /* IASKAppSettingsViewController.m */; };
 		AEDCF8011954993C00546D00 /* IASKAppSettingsWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AEDCF7E41954993C00546D00 /* IASKAppSettingsWebViewController.m */; };
 		AEDCF8021954993C00546D00 /* IASKSpecifierValuesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AEDCF7E61954993C00546D00 /* IASKSpecifierValuesViewController.m */; };
@@ -118,8 +118,8 @@
 		AEDCF7D3194B8AAE00546D00 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		AEDCF7D4194B8AAE00546D00 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 		AEDCF7D5194B8AAE00546D00 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		AEDCF7D9194B90D700546D00 /* ELCvView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELCvView.h; sourceTree = "<group>"; };
-		AEDCF7DA194B90D700546D00 /* ELCvView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ELCvView.mm; sourceTree = "<group>"; };
+		AEDCF7D9194B90D700546D00 /* ELImageProcessing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELImageProcessing.h; sourceTree = "<group>"; };
+		AEDCF7DA194B90D700546D00 /* ELImageProcessing.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ELImageProcessing.mm; sourceTree = "<group>"; };
 		AEDCF7E11954993C00546D00 /* IASKAppSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IASKAppSettingsViewController.h; sourceTree = "<group>"; };
 		AEDCF7E21954993C00546D00 /* IASKAppSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IASKAppSettingsViewController.m; sourceTree = "<group>"; };
 		AEDCF7E31954993C00546D00 /* IASKAppSettingsWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IASKAppSettingsWebViewController.h; sourceTree = "<group>"; };
@@ -230,12 +230,12 @@
 			isa = PBXGroup;
 			children = (
 				075A2F76193DF197002E8926 /* EasyLaunches.entitlements */,
-				AEDCF7D9194B90D700546D00 /* ELCvView.h */,
+				AEDCF7D9194B90D700546D00 /* ELImageProcessing.h */,
+				AEDCF7DA194B90D700546D00 /* ELImageProcessing.mm */,
 				07EC69BE1954F00B00060743 /* ELWSConnector.h */,
 				07EC69BF1954F00B00060743 /* ELWSConnector.m */,
 				07EC69BB1954D36100060743 /* ELTransaction.h */,
 				07EC69BC1954D36100060743 /* ELTransaction.m */,
-				AEDCF7DA194B90D700546D00 /* ELCvView.mm */,
 				075A2F4C193D1D8C002E8926 /* ELAppDelegate.h */,
 				075A2F4D193D1D8C002E8926 /* ELAppDelegate.m */,
 				075A2F4F193D1D8C002E8926 /* Main.storyboard */,
@@ -481,7 +481,7 @@
 				AEDCF8011954993C00546D00 /* IASKAppSettingsWebViewController.m in Sources */,
 				AEDCF8051954993C00546D00 /* IASKSettingsStoreFile.m in Sources */,
 				AEDCF8001954993C00546D00 /* IASKAppSettingsViewController.m in Sources */,
-				AEDCF7DB194B90D700546D00 /* ELCvView.mm in Sources */,
+				AEDCF7DB194B90D700546D00 /* ELImageProcessing.mm in Sources */,
 				AEDCF80D1954993C00546D00 /* IASKTextField.m in Sources */,
 				AEDCF8091954993C00546D00 /* IASKPSTextFieldSpecifierViewCell.m in Sources */,
 				075A2F4E193D1D8C002E8926 /* ELAppDelegate.m in Sources */,
