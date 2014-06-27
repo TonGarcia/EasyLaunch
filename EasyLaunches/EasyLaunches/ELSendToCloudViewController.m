@@ -16,9 +16,13 @@
 
 @implementation ELSendToCloudViewController
 {
-    NSArray *test;
     BOOL check;
 }
+
+@synthesize tableViewWithData;
+@synthesize sendToCloud;
+@synthesize editData;
+@synthesize dataMutableArray;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -33,7 +37,27 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    test = [NSArray arrayWithObjects:@"Egg Benedict", @"Mushroom Risotto", @"Full Breakfast", @"Hamburger", @"Ham and Egg Sandwich", @"Creme Brelee", @"White Chocolate Donut", @"Starbucks Coffee", @"Vegetable Curry", @"Instant Noodle with Egg", @"Noodle with BBQ Pork", @"Japanese Noodle with Pork", @"Green Tea", @"Thai Shrimp Cake", @"Angry Birds Cake", @"Ham and Cheese Panini", nil];
+    dataMutableArray = [[NSMutableArray alloc] init];
+    [dataMutableArray addObject:@"Egg Benedict"];
+    [dataMutableArray addObject:@"Mushroom Risotto"];
+    [dataMutableArray addObject:@"Full Breakfast"];
+    [dataMutableArray addObject:@"Hamburger"];
+    [dataMutableArray addObject:@"Ham and Egg Sandwich"];
+    [dataMutableArray addObject:@"Creme Brelee"];
+    [dataMutableArray addObject:@"White Chocolate Donut"];
+    [dataMutableArray addObject:@"Starbucks Coffee"];
+    [dataMutableArray addObject:@"Vegetable Curry"];
+    [dataMutableArray addObject:@"Instant Noodle with Egg"];
+    [dataMutableArray addObject:@"Noodle with BBQ Pork"];
+    [dataMutableArray addObject:@"Japanese Noodle with Pork"];
+    [dataMutableArray addObject:@"Green Tea"];
+    [dataMutableArray addObject:@"Thai Shrimp Cake"];
+    [dataMutableArray addObject:@"Angry Birds Cake"];
+    [dataMutableArray addObject:@"Ham and Cheese Panini"];
+    
+    // don't work
+    //self.navigationItem.backBarButtonItem = @"Cancelar";
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -42,11 +66,15 @@
     // Dispose of any resources that can be recreated.
 }
 
+
+// elements count
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [test count];
+    return [dataMutableArray count];
 }
 
+
+// set elements in the table view
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *simpleTableIdentifier = @"SimpleTableCell";
@@ -57,20 +85,36 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
     }
     
-    cell.textLabel.text = [test objectAtIndex:indexPath.row];
+    cell.textLabel.text = [dataMutableArray objectAtIndex:indexPath.row];
     
     // code for test
     if (check) {
-        cell.imageView.image = [UIImage imageNamed:@"red_circle.png"];
+        cell.textLabel.textColor = [UIColor greenColor];
         check = NO;
     } else {
-        cell.imageView.image = [UIImage imageNamed:@"green_circle.png"];
+        cell.textLabel.textColor = [UIColor redColor];
         check = YES;
     }
     
     return cell;
 }
 
+//______________________________________________________start______________________________________________________________________________
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (editingStyle == UITableViewCellEditingStyleDelete)
+    {
+        [dataMutableArray removeObjectAtIndex:indexPath.row];
+        [tableViewWithData deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+    }
+    else if (editingStyle == UITableViewCellEditingStyleInsert)
+    {
+        // here code for add in array and row in the table view
+    }
+}
+
+//_______________________________________________________end_______________________________________________________________________________
 
 -(NSString*) toJSON:(NSMutableArray*)array
 {
@@ -89,6 +133,40 @@
     return returned;
 }
 
+- (IBAction)editValues:(id)sender
+{
+    if ([tableViewWithData isEditing]) {
+        // If the tableView is already in edit mode, turn it off. Also change the title of the button to reflect the intended verb (‘Edit’, in this case).
+        
+        [tableViewWithData setEditing:NO animated:YES];
+        [self.editData setTitle:@"Editar"];
+        
+        self.navigationItem.leftBarButtonItem = nil;
+        self.navigationItem.leftItemsSupplementBackButton = YES;
+        
+        [self.sendToCloud setEnabled:YES];
+    }
+    else {
+        [self.editData setTitle:@"Concluído"];
+        
+        [self.sendToCloud setEnabled:NO];
+        self.navigationItem.leftItemsSupplementBackButton = NO;
+        
+        UIBarButtonItem *leftButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addNewValue)];
+        self.navigationItem.leftBarButtonItem = leftButton;
+        
+        // Turn on edit mode
+        
+        [tableViewWithData setEditing:YES animated:YES];
+    }
+}
+
+- (void)addNewValue
+{
+    [dataMutableArray addObject:@"New data added"];
+    [tableViewWithData reloadData];
+}
+
 - (IBAction)sendToCloud:(id)sender
 {
     // TransactionExemple
@@ -105,8 +183,4 @@
     [ELWSConnector postTransaction:array_in_json];
 }
 
-- (IBAction)editValues:(id)sender
-{
-    NSLog(@"Edit those values man!");    
-}
 @end

@@ -11,7 +11,9 @@
 
 @interface ELSendToCloudViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *sendToCloud;
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *editDatas;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *editData;
+@property (strong, nonatomic) IBOutlet UITableView *tableViewWithData;
+@property (nonatomic) NSMutableArray *dataMutableArray;
 
 - (IBAction)sendToCloud:(id)sender;
 - (IBAction)editValues:(id)sender;
