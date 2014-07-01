@@ -8,6 +8,7 @@
 
 #import "ELViewController.h"
 #import "ELImageProcessing.h"
+#import "tesseract.h"
 
 @interface ELViewController ()
 
@@ -255,18 +256,28 @@ UIButton *button;
     //O que falta é salvar as imagens. Procure uma estrutura que salve os recortes e pronto. Observe que o tipo UIImage não pega o tipo CGImageRef,
     // veja abaixo como eu fiz pra unir os diferentes tipos.
     
-    imageView.image = myImage;
-    
-    Mat mat= [ELImageProcessing cvMatFromUIImage:[UIImage imageWithCGImage:croppedImage]];
-    Mat img;
-    cvtColor(mat, img, COLOR_BGR2GRAY);
-    GaussianBlur(img, mat, cv::Size(5, 5), 2, 2);
-    adaptiveThreshold(mat, img, 255, 1, 1, 11, 2);
-    vector < vector<cv::Point> > contours;
-    findContours(img, contours, RETR_LIST, CHAIN_APPROX_SIMPLE);
+    //imageView.image = myImage;
     
     
-    NSString *message = [NSString stringWithFormat: @"Valor processado: 53,61 "];
+    //Processamento da imagem
+    Mat img= [ELImageProcessing cvMatFromUIImage:[UIImage imageWithCGImage:croppedImage]];
+    cvtColor(img, img, COLOR_BGR2GRAY);
+    GaussianBlur(img, img, cv::Size(5, 5), 2, 2);
+    adaptiveThreshold(img, img, 255, 1, 1, 11, 2);
+    
+    //vector < vector<cv::Point> > contours;
+    //findContours(img, contours, RETR_LIST, CHAIN_APPROX_SIMPLE);
+    
+    
+    Tesseract* tesseract = [[Tesseract alloc] initWithDataPath:@"tessdata" language:@"por+eng"];
+    //[tesseract setVariableValue:@"0123456789" forKey:@"tessedit_char_whitelist"];
+    [tesseract setImage:[ELImageProcessing UIImageFromCVMat:img]];
+    [tesseract recognize];
+    
+    //Valor processado = [tesseract recognizedText]
+    NSLog(@"%@", [tesseract recognizedText]);
+    
+    NSString *message = [NSString stringWithFormat: @"Valor processado: %@",[tesseract recognizedText]];
     
     UIAlertView *toast = [[UIAlertView alloc] initWithTitle:nil
                                                     message:message
@@ -280,6 +291,7 @@ UIButton *button;
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, duration * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
         [toast dismissWithClickedButtonIndex:0 animated:YES];
     });
+    
     
     
     

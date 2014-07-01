@@ -14,13 +14,4 @@ const int ImageSize = sizex * sizey;
 
     + (UIImage *)UIImageFromCVMat:(Mat)cvMat;
 
-    @property(nonatomic) CvMat* trainData;
-    @property(nonatomic) CvMat* trainClasses;
-    @property(nonatomic) KNearest *knearest;
-
-
-    -(void) PreProcessImage:(Mat *) inImage outImage:(Mat *) outImage;
-    -(void) LearnFromImages:(CvMat*) trainData trainClasses:(CvMat*) trainClasses;
-    -(void) AnalyseImage;
-
 @end
