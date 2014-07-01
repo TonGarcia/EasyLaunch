@@ -292,6 +292,7 @@ UIButton *button;
         [toast dismissWithClickedButtonIndex:0 animated:YES];
     });
     
+    [tesseract clear];
     
     
     
