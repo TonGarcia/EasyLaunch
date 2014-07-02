@@ -17,7 +17,8 @@ using namespace cv;
 
 @interface ELViewController : UIViewController <UIImagePickerControllerDelegate,
                                                 UINavigationControllerDelegate,
-                                                UIGestureRecognizerDelegate>
+                                                UIGestureRecognizerDelegate,
+                                                UIAlertViewDelegate>
 {
     CGPoint lastPoint;
     CGFloat red;
@@ -26,6 +27,7 @@ using namespace cv;
     CGFloat brush;
     CGFloat opacity;
     UIImage *myImage;
+    UIImage *imageLastSate;
     UIImage *noPhoto;
     BOOL redEnabled;
     BOOL greenEnbaled;
@@ -34,6 +36,8 @@ using namespace cv;
     CGFloat biggerPointX;
     CGFloat smallerPointY;
     CGFloat biggerPointY;
+    NSString *processedValue;
+    NSMutableArray *allProcessedData;
 }
 
 @property (strong, nonatomic) IBOutlet UIImageView *imageView;

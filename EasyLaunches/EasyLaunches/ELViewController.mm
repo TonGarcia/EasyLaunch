@@ -53,12 +53,15 @@ UIButton *button;
     biggerPointX = 0.0;
     biggerPointY = 0.0;
     
-    //set values
+    //set values for marker
     red = 0.0/255.0;
     green = 0.0/255.0;
     blue = 0.0/255.0;
     brush = 20.0;
     opacity = 0.1;
+    
+    // init NSMutableArray for all processed data
+    allProcessedData = [[NSMutableArray alloc]init];
     
 }
 
@@ -112,9 +115,9 @@ UIButton *button;
 {
     greenEnbaled = YES;
     redEnabled = NO;
-    red=0/255.0;
-    green=168/255.0;
-    blue=89/255.0;
+    red=0.0/255.0;
+    green=168.0/255.0;
+    blue=89.0/255.0;
     markButton.tintColor = [UIColor colorWithRed:red green:green blue:blue alpha:1];
 }
 
@@ -122,9 +125,9 @@ UIButton *button;
 {
     greenEnbaled = YES;
     redEnabled = NO;
-    red=0/255.0;
-    green=0/255.0;
-    blue=255/255.0;
+    red=0.0/255.0;
+    green=0.0/255.0;
+    blue=255.0/255.0;
     markButton.tintColor = [UIColor colorWithRed:red green:green blue:blue alpha:1];
 }
 
@@ -274,23 +277,25 @@ UIButton *button;
     [tesseract setImage:[ELImageProcessing UIImageFromCVMat:img]];
     [tesseract recognize];
     
-    //Valor processado = [tesseract recognizedText]
-    NSLog(@"%@", [tesseract recognizedText]);
+    processedValue = [tesseract recognizedText];
     
-    NSString *message = [NSString stringWithFormat: @"Valor processado: %@",[tesseract recognizedText]];
+    //Valor processado = [tesseract recognizedText]
+    NSLog(@"%@", processedValue);
+    
+    NSString *message = [NSString stringWithFormat: @"Valor processado: %@",processedValue];
     
     UIAlertView *toast = [[UIAlertView alloc] initWithTitle:nil
                                                     message:message
-                                                   delegate:nil
-                                          cancelButtonTitle:nil
-                                          otherButtonTitles:nil, nil];
+                                                   delegate:self
+                                          cancelButtonTitle:@"Tentar Novamente"
+                                          otherButtonTitles:@"Ok", nil];
     [toast show];
     
-    int duration = 1; // duration in seconds
-    
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, duration * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
-        [toast dismissWithClickedButtonIndex:0 animated:YES];
-    });
+//    int duration = 1; // duration in seconds
+//    
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, duration * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+//        [toast dismissWithClickedButtonIndex:0 animated:YES];
+//    });
     
     [tesseract clear];
     
@@ -303,6 +308,17 @@ UIButton *button;
     smallerPointY = imageView.frame.size.height;
     biggerPointX = 0.0;
     biggerPointY = 0.0;
+}
+
+// ações para os botões do alertview
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 1) {
+        imageLastSate = imageView.image;
+        [allProcessedData addObject:processedValue];
+    } else {
+        imageView.image = imageLastSate;
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -353,6 +369,7 @@ UIButton *button;
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
     // Prepair the image
     myImage = info[UIImagePickerControllerEditedImage];
+    imageLastSate = myImage;
     
     [self setImageAndResizeUIImageView];
     
