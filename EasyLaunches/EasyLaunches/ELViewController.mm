@@ -7,13 +7,19 @@
 //
 
 #import "ELViewController.h"
-#import "ELCvView.h"
+#import "ELImageProcessing.h"
+#import "tesseract.h"
 
 @interface ELViewController ()
 
 @end
 
 @implementation ELViewController
+{
+    NSArray *paths;
+    NSString *documentsDirectory;
+    NSString *path;
+}
 
 UIButton *button;
 
@@ -52,12 +58,23 @@ UIButton *button;
     biggerPointX = 0.0;
     biggerPointY = 0.0;
     
-    //set values
+    //set values for marker
     red = 0.0/255.0;
     green = 0.0/255.0;
     blue = 0.0/255.0;
     brush = 20.0;
     opacity = 0.1;
+    
+    // init NSMutableArray for all processed data
+    allProcessedData = [[NSMutableArray alloc]init];
+    
+    paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    documentsDirectory = [paths objectAtIndex:0];
+    path = [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"/EasyLaunches.plist"]];
+    
+    if (imageView.image == noPhoto) {
+        [allProcessedData writeToFile:path atomically:YES];
+    }
     
 }
 
@@ -101,6 +118,7 @@ UIButton *button;
 {
     redEnabled = YES;
     greenEnbaled = NO;
+    blueEnabled = NO;
     red = 255.0/255.0;
     green = 0.0/255.0;
     blue = 0.0/2555.0;
@@ -111,26 +129,33 @@ UIButton *button;
 {
     greenEnbaled = YES;
     redEnabled = NO;
-    red=0/255.0;
-    green=168/255.0;
-    blue=89/255.0;
+    blueEnabled = NO;
+    red=0.0/255.0;
+    green=168.0/255.0;
+    blue=89.0/255.0;
     markButton.tintColor = [UIColor colorWithRed:red green:green blue:blue alpha:1];
 }
 
 - (void)blueMark:(id)sender
 {
-    greenEnbaled = YES;
+    blueEnabled = YES;
+    greenEnbaled = NO;
     redEnabled = NO;
-    red=0/255.0;
-    green=0/255.0;
-    blue=255/255.0;
+    red=0.0/255.0;
+    green=0.0/255.0;
+    blue=255.0/255.0;
     markButton.tintColor = [UIColor colorWithRed:red green:green blue:blue alpha:1];
 }
 
-
+// clear image view and array
 - (IBAction)clearMarks:(id)sender
 {
     [self setImageAndResizeUIImageView];
+    
+    imageLastSate = myImage;
+    
+    [allProcessedData removeAllObjects];
+    [allProcessedData writeToFile:path atomically:YES];
     
     smallerPointX = myImage.size.width;
     smallerPointY = myImage.size.height;
@@ -170,7 +195,7 @@ UIButton *button;
     }
     
     // Validate if a color was selected
-    else if (!redEnabled && !greenEnbaled) {
+    else if (!redEnabled && !greenEnbaled && !blueEnabled) {
         UIAlertView *alertColor = [[UIAlertView alloc] initWithTitle:@"Erro"
                                                              message:@"Cor não selecionada"
                                                             delegate:nil
@@ -187,7 +212,7 @@ UIButton *button;
 -(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
     // Validate if a color was selected
-    if (!redEnabled && !greenEnbaled) {
+    if (!redEnabled && !greenEnbaled && !blueEnabled) {
         UIAlertView *alertColor = [[UIAlertView alloc] initWithTitle:@"Erro"
                                                              message:@"cor não selecionada"
                                                             delegate:nil
@@ -250,38 +275,43 @@ UIButton *button;
     
     brush /= 2;
     
-    // Leonn, abaixo está um código que irá setar a imagem recortada. No entanto, não devemos setar e sim salvar em alguma estrutura.
-    // o tempo acabou aqui e preciso ir embora, caso contrário o Braga me esgana, senão eu faria e terminaria. O corte está perfeito, não mude nada kkkk.
-    //O que falta é salvar as imagens. Procure uma estrutura que salve os recortes e pronto. Observe que o tipo UIImage não pega o tipo CGImageRef,
-    // veja abaixo como eu fiz pra unir os diferentes tipos.
+    //Processamento da imagem
+    Mat img= [ELImageProcessing cvMatFromUIImage:[UIImage imageWithCGImage:croppedImage]];
+    cvtColor(img, img, COLOR_BGR2GRAY);
+    GaussianBlur(img, img, cv::Size(5, 5), 2, 2);
+    adaptiveThreshold(img, img, 255, 1, 1, 11, 2);
     
-    imageView.image = myImage;
-    
-    Mat mat= [ELCvView cvMatFromUIImage:[UIImage imageWithCGImage:croppedImage]];
-    Mat img;
-    cvtColor(mat, img, COLOR_BGR2GRAY);
-    GaussianBlur(img, mat, cv::Size(5, 5), 2, 2);
-    adaptiveThreshold(mat, img, 255, 1, 1, 11, 2);
-    vector < vector<cv::Point> > contours;
-    findContours(img, contours, RETR_LIST, CHAIN_APPROX_SIMPLE);
+    //vector < vector<cv::Point> > contours;
+    //findContours(img, contours, RETR_LIST, CHAIN_APPROX_SIMPLE);
     
     
-    NSString *message = [NSString stringWithFormat: @"Valores processados: %lu ",contours.size()];
+    Tesseract* tesseract = [[Tesseract alloc] initWithDataPath:@"tessdata" language:@"por+eng"];
+    
+    //[tesseract setVariableValue:@"0123456789" forKey:@"tessedit_char_whitelist"];
+    [tesseract setImage:[ELImageProcessing UIImageFromCVMat:img]];
+    [tesseract recognize];
+    
+    processedValue = [tesseract recognizedText];
+    
+    //Valor processado = [tesseract recognizedText]
+    NSLog(@"%@", processedValue);
+    
+    NSString *message = [NSString stringWithFormat: @"Valor processado: %@",processedValue];
     
     UIAlertView *toast = [[UIAlertView alloc] initWithTitle:nil
                                                     message:message
-                                                   delegate:nil
-                                          cancelButtonTitle:nil
-                                          otherButtonTitles:nil, nil];
+                                                   delegate:self
+                                          cancelButtonTitle:@"Tentar Novamente"
+                                          otherButtonTitles:@"Ok", nil];
     [toast show];
     
-    int duration = 1; // duration in seconds
+//    int duration = 1; // duration in seconds
+//    
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, duration * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+//        [toast dismissWithClickedButtonIndex:0 animated:YES];
+//    });
     
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, duration * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
-        [toast dismissWithClickedButtonIndex:0 animated:YES];
-    });
-    
-    
+    [tesseract clear];
     
    // UIImage *img2= [ELCvView UIImageFromCVMat:img];
    // imageView.image = img2;
@@ -290,6 +320,33 @@ UIButton *button;
     smallerPointY = imageView.frame.size.height;
     biggerPointX = 0.0;
     biggerPointY = 0.0;
+}
+
+// ações para os botões do alertview
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 1) {
+        imageLastSate = imageView.image;
+        
+        NSMutableArray *temp = [[NSMutableArray alloc]init];
+        
+        [temp addObject:processedValue];
+        
+        if (greenEnbaled) {
+            [temp addObject:@"Receita"];
+        } else if (redEnabled) {
+            [temp addObject:@"Despesa"];
+        } else if (blueEnabled) {
+            [temp addObject:@"Info"];
+        }
+        
+        [allProcessedData addObject:temp];
+        
+        [allProcessedData writeToFile:path atomically:YES];
+        
+    } else {
+        imageView.image = imageLastSate;
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -340,6 +397,7 @@ UIButton *button;
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
     // Prepair the image
     myImage = info[UIImagePickerControllerEditedImage];
+    imageLastSate = myImage;
     
     [self setImageAndResizeUIImageView];
     

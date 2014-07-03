@@ -10,19 +10,26 @@
 #import "ELAppDelegate.h"
 #import "ELTransaction.h"
 
+#define RECEITA "Receita"
+#define DESPESA "Despesa"
+#define INFO "Info"
+
 @interface ELSendToCloudViewController ()
 
 @end
 
 @implementation ELSendToCloudViewController
 {
-    BOOL check;
+    NSArray *paths;
+    NSString *documentsDirectory;
+    NSString *path;
 }
 
 @synthesize tableViewWithData;
 @synthesize sendToCloud;
 @synthesize editData;
-@synthesize dataMutableArray;
+@synthesize allData;
+@synthesize allColors;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -37,23 +44,17 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    dataMutableArray = [[NSMutableArray alloc] init];
-    [dataMutableArray addObject:@"Egg Benedict"];
-    [dataMutableArray addObject:@"Mushroom Risotto"];
-    [dataMutableArray addObject:@"Full Breakfast"];
-    [dataMutableArray addObject:@"Hamburger"];
-    [dataMutableArray addObject:@"Ham and Egg Sandwich"];
-    [dataMutableArray addObject:@"Creme Brelee"];
-    [dataMutableArray addObject:@"White Chocolate Donut"];
-    [dataMutableArray addObject:@"Starbucks Coffee"];
-    [dataMutableArray addObject:@"Vegetable Curry"];
-    [dataMutableArray addObject:@"Instant Noodle with Egg"];
-    [dataMutableArray addObject:@"Noodle with BBQ Pork"];
-    [dataMutableArray addObject:@"Japanese Noodle with Pork"];
-    [dataMutableArray addObject:@"Green Tea"];
-    [dataMutableArray addObject:@"Thai Shrimp Cake"];
-    [dataMutableArray addObject:@"Angry Birds Cake"];
-    [dataMutableArray addObject:@"Ham and Cheese Panini"];
+    
+    allData = [[NSMutableArray alloc]init];
+    
+    paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    documentsDirectory = [paths objectAtIndex:0];
+    path = [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"/EasyLaunches.plist"]];
+    
+    NSArray *load = [NSArray arrayWithContentsOfFile:path];
+    for (NSMutableArray *item in load) {
+        [allData addObject:item];
+    }
     
     // don't work
     //self.navigationItem.backBarButtonItem = @"Cancelar";
@@ -70,7 +71,7 @@
 // elements count
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [dataMutableArray count];
+    return [allData count];
 }
 
 
@@ -85,27 +86,26 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
     }
     
-    cell.textLabel.text = [dataMutableArray objectAtIndex:indexPath.row];
+    cell.textLabel.text = [[allData objectAtIndex:indexPath.row] objectAtIndex:0];
     
     // code for test
-    if (check) {
+    if ([[[allData objectAtIndex:indexPath.row] objectAtIndex:1] isEqualToString:@RECEITA]) {
         cell.textLabel.textColor = [UIColor greenColor];
-        check = NO;
-    } else {
+        
+    } else if ([[[allData objectAtIndex:indexPath.row] objectAtIndex:1] isEqualToString:@DESPESA]) {
         cell.textLabel.textColor = [UIColor redColor];
-        check = YES;
+    } else if ([[[allData objectAtIndex:indexPath.row] objectAtIndex:1] isEqualToString:@INFO]) {
+        cell.textLabel.textColor = [UIColor blueColor];
     }
     
     return cell;
 }
 
-//______________________________________________________start______________________________________________________________________________
-
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete)
     {
-        [dataMutableArray removeObjectAtIndex:indexPath.row];
+        [allData removeObjectAtIndex:indexPath.row];
         [tableViewWithData deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
     }
     else if (editingStyle == UITableViewCellEditingStyleInsert)
@@ -113,8 +113,6 @@
         // here code for add in array and row in the table view
     }
 }
-
-//_______________________________________________________end_______________________________________________________________________________
 
 -(NSString*) toJSON:(NSMutableArray*)array
 {
@@ -144,6 +142,8 @@
         self.navigationItem.leftBarButtonItem = nil;
         self.navigationItem.leftItemsSupplementBackButton = YES;
         
+        [allData writeToFile:path atomically:YES];
+        
         [self.sendToCloud setEnabled:YES];
     }
     else {
@@ -163,7 +163,10 @@
 
 - (void)addNewValue
 {
-    [dataMutableArray addObject:@"New data added"];
+    NSMutableArray *new = [[NSMutableArray alloc]init];
+    [new addObject:@"New data added"];
+    [new addObject:@RECEITA];
+    [allData addObject:new];
     [tableViewWithData reloadData];
 }
 
