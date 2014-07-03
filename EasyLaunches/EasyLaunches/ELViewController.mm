@@ -15,6 +15,11 @@
 @end
 
 @implementation ELViewController
+{
+    NSArray *paths;
+    NSString *documentsDirectory;
+    NSString *path;
+}
 
 UIButton *button;
 
@@ -63,6 +68,14 @@ UIButton *button;
     // init NSMutableArray for all processed data
     allProcessedData = [[NSMutableArray alloc]init];
     
+    paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    documentsDirectory = [paths objectAtIndex:0];
+    path = [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"/EasyLaunches.plist"]];
+    
+    if (imageView.image == noPhoto) {
+        [allProcessedData writeToFile:path atomically:YES];
+    }
+    
 }
 
 - (IBAction)markButtonClicked:(UIBarButtonItem *)sender forEvent:(UIEvent*)event
@@ -105,6 +118,7 @@ UIButton *button;
 {
     redEnabled = YES;
     greenEnbaled = NO;
+    blueEnabled = NO;
     red = 255.0/255.0;
     green = 0.0/255.0;
     blue = 0.0/2555.0;
@@ -115,6 +129,7 @@ UIButton *button;
 {
     greenEnbaled = YES;
     redEnabled = NO;
+    blueEnabled = NO;
     red=0.0/255.0;
     green=168.0/255.0;
     blue=89.0/255.0;
@@ -123,7 +138,8 @@ UIButton *button;
 
 - (void)blueMark:(id)sender
 {
-    greenEnbaled = YES;
+    blueEnabled = YES;
+    greenEnbaled = NO;
     redEnabled = NO;
     red=0.0/255.0;
     green=0.0/255.0;
@@ -131,10 +147,15 @@ UIButton *button;
     markButton.tintColor = [UIColor colorWithRed:red green:green blue:blue alpha:1];
 }
 
-
+// clear image view and array
 - (IBAction)clearMarks:(id)sender
 {
     [self setImageAndResizeUIImageView];
+    
+    imageLastSate = myImage;
+    
+    [allProcessedData removeAllObjects];
+    [allProcessedData writeToFile:path atomically:YES];
     
     smallerPointX = myImage.size.width;
     smallerPointY = myImage.size.height;
@@ -174,7 +195,7 @@ UIButton *button;
     }
     
     // Validate if a color was selected
-    else if (!redEnabled && !greenEnbaled) {
+    else if (!redEnabled && !greenEnbaled && !blueEnabled) {
         UIAlertView *alertColor = [[UIAlertView alloc] initWithTitle:@"Erro"
                                                              message:@"Cor não selecionada"
                                                             delegate:nil
@@ -191,7 +212,7 @@ UIButton *button;
 -(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
     // Validate if a color was selected
-    if (!redEnabled && !greenEnbaled) {
+    if (!redEnabled && !greenEnbaled && !blueEnabled) {
         UIAlertView *alertColor = [[UIAlertView alloc] initWithTitle:@"Erro"
                                                              message:@"cor não selecionada"
                                                             delegate:nil
@@ -254,14 +275,6 @@ UIButton *button;
     
     brush /= 2;
     
-    // Leonn, abaixo está um código que irá setar a imagem recortada. No entanto, não devemos setar e sim salvar em alguma estrutura.
-    // o tempo acabou aqui e preciso ir embora, caso contrário o Braga me esgana, senão eu faria e terminaria. O corte está perfeito, não mude nada kkkk.
-    //O que falta é salvar as imagens. Procure uma estrutura que salve os recortes e pronto. Observe que o tipo UIImage não pega o tipo CGImageRef,
-    // veja abaixo como eu fiz pra unir os diferentes tipos.
-    
-    //imageView.image = myImage;
-    
-    
     //Processamento da imagem
     Mat img= [ELImageProcessing cvMatFromUIImage:[UIImage imageWithCGImage:croppedImage]];
     cvtColor(img, img, COLOR_BGR2GRAY);
@@ -273,6 +286,7 @@ UIButton *button;
     
     
     Tesseract* tesseract = [[Tesseract alloc] initWithDataPath:@"tessdata" language:@"por+eng"];
+    
     //[tesseract setVariableValue:@"0123456789" forKey:@"tessedit_char_whitelist"];
     [tesseract setImage:[ELImageProcessing UIImageFromCVMat:img]];
     [tesseract recognize];
@@ -299,8 +313,6 @@ UIButton *button;
     
     [tesseract clear];
     
-    
-    
    // UIImage *img2= [ELCvView UIImageFromCVMat:img];
    // imageView.image = img2;
     
@@ -315,7 +327,23 @@ UIButton *button;
 {
     if (buttonIndex == 1) {
         imageLastSate = imageView.image;
-        [allProcessedData addObject:processedValue];
+        
+        NSMutableArray *temp = [[NSMutableArray alloc]init];
+        
+        [temp addObject:processedValue];
+        
+        if (greenEnbaled) {
+            [temp addObject:@"Receita"];
+        } else if (redEnabled) {
+            [temp addObject:@"Despesa"];
+        } else if (blueEnabled) {
+            [temp addObject:@"Info"];
+        }
+        
+        [allProcessedData addObject:temp];
+        
+        [allProcessedData writeToFile:path atomically:YES];
+        
     } else {
         imageView.image = imageLastSate;
     }

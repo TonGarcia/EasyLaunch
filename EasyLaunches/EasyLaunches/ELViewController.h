@@ -31,6 +31,7 @@ using namespace cv;
     UIImage *noPhoto;
     BOOL redEnabled;
     BOOL greenEnbaled;
+    BOOL blueEnabled;
     CALayer *layer;
     CGFloat smallerPointX;
     CGFloat biggerPointX;
