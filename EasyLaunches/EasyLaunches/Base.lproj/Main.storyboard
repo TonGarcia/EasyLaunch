@@ -168,11 +168,12 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XQF-zm-oIJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1767" y="323"/>
+            <point key="canvasLocation" x="1627" y="339"/>
         </scene>
         <!--Settings Navigation-->
         <scene sceneID="8GX-CQ-QNz">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DCd-f6-f12" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController definesPresentationContext="YES" id="u26-Eq-ahD" userLabel="Settings Navigation" sceneMemberID="viewController">
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="FRj-MC-3hg">
@@ -182,7 +183,6 @@
                         <segue destination="xRg-Uw-N9g" kind="relationship" relationship="rootViewController" id="2AD-uJ-Bvn"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="DCd-f6-f12" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="957" y="803"/>
         </scene>
@@ -196,6 +196,7 @@
         <image name="stack_of_photos-32.png" width="32" height="32"/>
         <image name="upload_to_cloud_filled-32.png" width="32" height="32"/>
     </resources>
+    <color key="tintColor" red="0.10619787844054819" green="0.53712204958369081" blue="0.6060267857142857" alpha="1" colorSpace="calibratedRGB"/>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
