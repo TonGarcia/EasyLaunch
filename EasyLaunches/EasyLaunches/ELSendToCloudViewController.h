@@ -14,7 +14,6 @@
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *editData;
 @property (strong, nonatomic) IBOutlet UITableView *tableViewWithData;
 @property (nonatomic) NSMutableArray *allData;
-@property (nonatomic) NSMutableArray *allColors;
 
 - (IBAction)sendToCloud:(id)sender;
 - (IBAction)editValues:(id)sender;

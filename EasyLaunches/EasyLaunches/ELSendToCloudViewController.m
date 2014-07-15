@@ -9,6 +9,8 @@
 #import "ELSendToCloudViewController.h"
 #import "ELAppDelegate.h"
 #import "ELTransaction.h"
+#import "ELEditViewController.h"
+#import "ELSingletonData.h"
 
 #define RECEITA "Receita"
 #define DESPESA "Despesa"
@@ -29,7 +31,6 @@
 @synthesize sendToCloud;
 @synthesize editData;
 @synthesize allData;
-@synthesize allColors;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -55,10 +56,30 @@
     for (NSMutableArray *item in load) {
         [allData addObject:item];
     }
-    
+
     // don't work
     //self.navigationItem.backBarButtonItem = @"Cancelar";
     
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    if ([[ELSingletonData sharedData] saveClicked] == YES) {
+        
+        NSMutableArray *tmp = [[NSMutableArray alloc]init];
+        [tmp addObject:[[ELSingletonData sharedData] sharedProcessedValue]];
+        [tmp addObject:[[ELSingletonData sharedData] sharedMarkType]];
+        
+        if ([[ELSingletonData sharedData] editMode] == YES) {
+            [allData replaceObjectAtIndex:[[ELSingletonData sharedData] refRow] withObject:tmp];
+        } else {
+            [allData addObject:tmp];
+        }
+        
+        [tableViewWithData reloadData];
+        
+        [[ELSingletonData sharedData] setSaveClicked:NO];
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -156,18 +177,40 @@
         self.navigationItem.leftBarButtonItem = leftButton;
         
         // Turn on edit mode
-        
         [tableViewWithData setEditing:YES animated:YES];
     }
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableViewWithData deselectRowAtIndexPath:indexPath animated:YES];
+    
+    ELEditViewController *uvc = [[ELEditViewController alloc]init];
+
+    [[ELSingletonData sharedData] setSharedProcessedValue:[[allData objectAtIndex:indexPath.row] objectAtIndex:0]];
+    [[ELSingletonData sharedData] setSharedMarkType:[[allData objectAtIndex:indexPath.row] objectAtIndex:1]];
+    [[ELSingletonData sharedData] setRefRow:indexPath.row];
+    [[ELSingletonData sharedData] setEditMode:YES];
+    
+    [self.navigationController pushViewController:uvc animated:YES];
+}
+
 - (void)addNewValue
 {
-    NSMutableArray *new = [[NSMutableArray alloc]init];
-    [new addObject:@"New data added"];
-    [new addObject:@RECEITA];
-    [allData addObject:new];
-    [tableViewWithData reloadData];
+//    NSMutableArray *new = [[NSMutableArray alloc]init];
+    
+    ELEditViewController *uvc = [[ELEditViewController alloc]init];
+    
+    [[ELSingletonData sharedData] setSharedProcessedValue:@""];
+    [[ELSingletonData sharedData] setSharedMarkType:@""];
+    [[ELSingletonData sharedData] setEditMode:NO];
+    
+    [self.navigationController pushViewController:uvc animated:NO];
+    
+//    [new addObject:@"New data added"];
+//    [new addObject:@RECEITA];
+//    [allData addObject:new];
+//    [tableViewWithData reloadData];
 }
 
 - (IBAction)sendToCloud:(id)sender
