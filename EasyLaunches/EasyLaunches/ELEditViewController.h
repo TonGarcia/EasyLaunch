@@ -13,4 +13,6 @@
 @property (strong, nonatomic) IBOutlet UITextField *fieldValue;
 @property (strong, nonatomic) IBOutlet UISegmentedControl *type;
 
+- (IBAction)segmentSetColor:(id)sender;
+
 @end

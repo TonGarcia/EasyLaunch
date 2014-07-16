@@ -11,6 +11,7 @@
 #import "ELTransaction.h"
 #import "ELEditViewController.h"
 #import "ELSingletonData.h"
+#import "ELDefinitionOfColors.h"
 
 #define RECEITA "Receita"
 #define DESPESA "Despesa"
@@ -58,18 +59,21 @@
     }
 
     // don't work
-    //self.navigationItem.backBarButtonItem = @"Cancelar";
+    //self.navigationItem.backBarButtonItem.title = @"Cancelar";
     
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    // check if save button was clicked
     if ([[ELSingletonData sharedData] saveClicked] == YES) {
         
+        // get data
         NSMutableArray *tmp = [[NSMutableArray alloc]init];
         [tmp addObject:[[ELSingletonData sharedData] sharedProcessedValue]];
         [tmp addObject:[[ELSingletonData sharedData] sharedMarkType]];
         
+        // it was editing then the new element will be replaced else will be added
         if ([[ELSingletonData sharedData] editMode] == YES) {
             [allData replaceObjectAtIndex:[[ELSingletonData sharedData] refRow] withObject:tmp];
         } else {
@@ -109,14 +113,13 @@
     
     cell.textLabel.text = [[allData objectAtIndex:indexPath.row] objectAtIndex:0];
     
-    // code for test
     if ([[[allData objectAtIndex:indexPath.row] objectAtIndex:1] isEqualToString:@RECEITA]) {
-        cell.textLabel.textColor = [UIColor greenColor];
+        cell.textLabel.textColor = [[ELDefinitionOfColors sharedColor] elGreen];
         
     } else if ([[[allData objectAtIndex:indexPath.row] objectAtIndex:1] isEqualToString:@DESPESA]) {
-        cell.textLabel.textColor = [UIColor redColor];
+        cell.textLabel.textColor = [[ELDefinitionOfColors sharedColor] elRed];
     } else if ([[[allData objectAtIndex:indexPath.row] objectAtIndex:1] isEqualToString:@INFO]) {
-        cell.textLabel.textColor = [UIColor blueColor];
+        cell.textLabel.textColor = [[ELDefinitionOfColors sharedColor] elBlue];
     }
     
     return cell;
@@ -195,6 +198,7 @@
     [self.navigationController pushViewController:uvc animated:YES];
 }
 
+// adding new value in the tableview and array
 - (void)addNewValue
 {
 //    NSMutableArray *new = [[NSMutableArray alloc]init];
@@ -205,12 +209,14 @@
     [[ELSingletonData sharedData] setSharedMarkType:@""];
     [[ELSingletonData sharedData] setEditMode:NO];
     
-    [self.navigationController pushViewController:uvc animated:NO];
+//    [UIView animateWithDuration:0.75
+//                     animations:^{
+//                         [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+//                         [self.navigationController pushViewController:uvc animated:NO];
+//                         [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromRight forView:self.navigationController.view cache:NO];
+//                     }];
     
-//    [new addObject:@"New data added"];
-//    [new addObject:@RECEITA];
-//    [allData addObject:new];
-//    [tableViewWithData reloadData];
+    [self.navigationController pushViewController:uvc animated:YES];
 }
 
 - (IBAction)sendToCloud:(id)sender

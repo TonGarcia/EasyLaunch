@@ -21,9 +21,6 @@ using namespace cv;
                                                 UIAlertViewDelegate>
 {
     CGPoint lastPoint;
-    CGFloat red;
-    CGFloat green;
-    CGFloat blue;
     CGFloat brush;
     CGFloat opacity;
     UIImage *myImage;

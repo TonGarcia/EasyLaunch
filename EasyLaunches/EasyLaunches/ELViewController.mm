@@ -9,6 +9,7 @@
 #import "ELViewController.h"
 #import "ELImageProcessing.h"
 #import "tesseract.h"
+#import "ELDefinitionOfColors.h"
 
 @interface ELViewController ()
 
@@ -59,9 +60,6 @@ UIButton *button;
     biggerPointY = 0.0;
     
     //set values for marker
-    red = 0.0/255.0;
-    green = 0.0/255.0;
-    blue = 0.0/255.0;
     brush = 20.0;
     opacity = 0.1;
     
@@ -119,10 +117,7 @@ UIButton *button;
     redEnabled = YES;
     greenEnbaled = NO;
     blueEnabled = NO;
-    red = 255.0/255.0;
-    green = 0.0/255.0;
-    blue = 0.0/2555.0;
-    markButton.tintColor = [UIColor redColor];
+    markButton.tintColor = [[ELDefinitionOfColors sharedColor] elRed];
 }
 
 - (void)greenMark:(id)sender
@@ -130,10 +125,7 @@ UIButton *button;
     greenEnbaled = YES;
     redEnabled = NO;
     blueEnabled = NO;
-    red=0.0/255.0;
-    green=168.0/255.0;
-    blue=89.0/255.0;
-    markButton.tintColor = [UIColor colorWithRed:red green:green blue:blue alpha:1];
+    markButton.tintColor = [[ELDefinitionOfColors sharedColor] elGreen];
 }
 
 - (void)blueMark:(id)sender
@@ -141,10 +133,7 @@ UIButton *button;
     blueEnabled = YES;
     greenEnbaled = NO;
     redEnabled = NO;
-    red=0.0/255.0;
-    green=0.0/255.0;
-    blue=255.0/255.0;
-    markButton.tintColor = [UIColor colorWithRed:red green:green blue:blue alpha:1];
+    markButton.tintColor = [[ELDefinitionOfColors sharedColor] elBlue];
 }
 
 // clear image view and array
@@ -224,15 +213,29 @@ UIButton *button;
     UITouch *touch = [touches anyObject];
     CGPoint currentPoint = [touch locationInView:imageView];
     
+    // Drawing now while touchesMoved
     UIGraphicsBeginImageContext(imageView.frame.size);
     [imageView.image drawInRect:CGRectMake(0, 0, imageView.frame.size.width, imageView.frame.size.height)];
     CGContextMoveToPoint(UIGraphicsGetCurrentContext(), lastPoint.x, lastPoint.y);
     CGContextAddLineToPoint(UIGraphicsGetCurrentContext(), currentPoint.x, currentPoint.y);
     CGContextSetLineCap(UIGraphicsGetCurrentContext(), kCGLineCapRound);
     CGContextSetLineWidth(UIGraphicsGetCurrentContext(), brush);
-    CGContextSetRGBStrokeColor(UIGraphicsGetCurrentContext(), red, green, blue, opacity);
-    CGContextSetBlendMode(UIGraphicsGetCurrentContext(), kCGBlendModeNormal);
     
+    CGColorRef colorRef;
+    
+    // getting rgba
+    if (redEnabled) {
+        colorRef = [[[ELDefinitionOfColors sharedColor] elRed] CGColor];
+    } else if (greenEnbaled) {
+        colorRef = [[[ELDefinitionOfColors sharedColor] elGreen] CGColor];
+    } else if (blueEnabled) {
+        colorRef = [[[ELDefinitionOfColors sharedColor] elBlue] CGColor];
+    }
+    
+    const CGFloat *components = CGColorGetComponents(colorRef);
+    CGContextSetRGBStrokeColor(UIGraphicsGetCurrentContext(), components[0], components[1], components[2], opacity);
+    
+    CGContextSetBlendMode(UIGraphicsGetCurrentContext(), kCGBlendModeNormal);
     CGContextStrokePath(UIGraphicsGetCurrentContext());
     imageView.image = UIGraphicsGetImageFromCurrentImageContext();
     [imageView setAlpha:1.0];
