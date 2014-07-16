@@ -6,9 +6,9 @@
 //  Copyright (c) 2014 EasyLaunches. All rights reserved.
 //
 
-#import "ELDefinitionOfColors.h"
+#import "ELColorsDefinition.h"
 
-@implementation ELDefinitionOfColors
+@implementation ELColorsDefinition
 
 @synthesize elGreen;
 @synthesize elRed;
@@ -23,7 +23,7 @@
 
 + (id) sharedColor
 {
-    static ELDefinitionOfColors *sharedColor = nil;
+    static ELColorsDefinition *sharedColor = nil;
     
     if (!sharedColor) {
         sharedColor = [[self alloc] initPrivate];

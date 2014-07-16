@@ -28,7 +28,7 @@
 		07EC69CA1955E0E400060743 /* ELSendToCloudViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07EC69C91955E0E400060743 /* ELSendToCloudViewController.m */; };
 		07EC69CB1955E0E400060743 /* ELSendToCloudViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07EC69C91955E0E400060743 /* ELSendToCloudViewController.m */; };
 		9333506C1974D65400A2E176 /* ELSingletonData.m in Sources */ = {isa = PBXBuildFile; fileRef = 9333506B1974D65400A2E176 /* ELSingletonData.m */; };
-		934F31C31976269600F44976 /* ELDefinitionOfColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 934F31C21976269600F44976 /* ELDefinitionOfColors.m */; };
+		934F31C31976269600F44976 /* ELColorsDefinition.m in Sources */ = {isa = PBXBuildFile; fileRef = 934F31C21976269600F44976 /* ELColorsDefinition.m */; };
 		9382A0D01974BF150080586D /* ELEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9382A0CE1974BF150080586D /* ELEditViewController.m */; };
 		9382A0D11974BF150080586D /* ELEditViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9382A0CF1974BF150080586D /* ELEditViewController.xib */; };
 		AE381F4419632B40008F6B8A /* Tesseract.mm in Sources */ = {isa = PBXBuildFile; fileRef = AE381E9C19632B40008F6B8A /* Tesseract.mm */; };
@@ -112,8 +112,8 @@
 		07EC69C91955E0E400060743 /* ELSendToCloudViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELSendToCloudViewController.m; sourceTree = "<group>"; };
 		9333506A1974D65400A2E176 /* ELSingletonData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELSingletonData.h; sourceTree = "<group>"; };
 		9333506B1974D65400A2E176 /* ELSingletonData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELSingletonData.m; sourceTree = "<group>"; };
-		934F31C11976269600F44976 /* ELDefinitionOfColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELDefinitionOfColors.h; sourceTree = "<group>"; };
-		934F31C21976269600F44976 /* ELDefinitionOfColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELDefinitionOfColors.m; sourceTree = "<group>"; };
+		934F31C11976269600F44976 /* ELColorsDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELColorsDefinition.h; sourceTree = "<group>"; };
+		934F31C21976269600F44976 /* ELColorsDefinition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELColorsDefinition.m; sourceTree = "<group>"; };
 		9382A0CD1974BF150080586D /* ELEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ELEditViewController.h; sourceTree = "<group>"; };
 		9382A0CE1974BF150080586D /* ELEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ELEditViewController.m; sourceTree = "<group>"; };
 		9382A0CF1974BF150080586D /* ELEditViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ELEditViewController.xib; sourceTree = "<group>"; };
@@ -421,8 +421,8 @@
 				9382A0CF1974BF150080586D /* ELEditViewController.xib */,
 				9333506A1974D65400A2E176 /* ELSingletonData.h */,
 				9333506B1974D65400A2E176 /* ELSingletonData.m */,
-				934F31C11976269600F44976 /* ELDefinitionOfColors.h */,
-				934F31C21976269600F44976 /* ELDefinitionOfColors.m */,
+				934F31C11976269600F44976 /* ELColorsDefinition.h */,
+				934F31C21976269600F44976 /* ELColorsDefinition.m */,
 			);
 			path = EasyLaunches;
 			sourceTree = "<group>";
@@ -786,7 +786,7 @@
 				ORGANIZATIONNAME = EasyLaunches;
 				TargetAttributes = {
 					075A2F39193D1D8C002E8926 = {
-						DevelopmentTeam = 5N98869Y2C;
+						DevelopmentTeam = A9GRUT7L2F;
 					};
 					075A2F5A193D1D8C002E8926 = {
 						TestTargetID = 075A2F39193D1D8C002E8926;
@@ -853,7 +853,7 @@
 			files = (
 				AEDCF8081954993C00546D00 /* IASKPSSliderSpecifierViewCell.m in Sources */,
 				075A2F54193D1D8C002E8926 /* ELViewController.mm in Sources */,
-				934F31C31976269600F44976 /* ELDefinitionOfColors.m in Sources */,
+				934F31C31976269600F44976 /* ELColorsDefinition.m in Sources */,
 				9333506C1974D65400A2E176 /* ELSingletonData.m in Sources */,
 				AEDCF80B1954993C00546D00 /* IASKSlider.m in Sources */,
 				AEDCF8061954993C00546D00 /* IASKSettingsStoreUserDefaults.m in Sources */,

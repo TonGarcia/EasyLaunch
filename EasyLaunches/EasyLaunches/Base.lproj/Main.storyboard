@@ -66,7 +66,7 @@
                     <navigationItem key="navigationItem" title="Easy Launches" id="8zV-jS-oJU">
                         <barButtonItem key="leftBarButtonItem" image="settings-32.png" id="zgg-Jc-hoX">
                             <connections>
-                                <segue destination="u26-Eq-ahD" kind="modal" id="yOF-EE-o0v"/>
+                                <segue destination="xRg-Uw-N9g" kind="push" customClass="UIStoryboardPopoverSegue" id="6Rd-P6-bfn"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="sent-32.png" id="lWH-No-twg">
@@ -158,33 +158,11 @@
                             <outlet property="delegate" destination="xRg-Uw-N9g" id="nM4-Gd-Uc1"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="Dle-ra-6eQ">
-                        <barButtonItem key="rightBarButtonItem" title="Ok" id="zCk-S2-lxI">
-                            <connections>
-                                <segue destination="fO0-aS-jaD" kind="modal" modalTransitionStyle="crossDissolve" id="iDd-bw-Jxt"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Root View Controller" id="Dle-ra-6eQ"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XQF-zm-oIJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1627" y="339"/>
-        </scene>
-        <!--Settings Navigation-->
-        <scene sceneID="8GX-CQ-QNz">
-            <objects>
-                <navigationController definesPresentationContext="YES" id="u26-Eq-ahD" userLabel="Settings Navigation" sceneMemberID="viewController">
-                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="FRj-MC-3hg">
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="xRg-Uw-N9g" kind="relationship" relationship="rootViewController" id="2AD-uJ-Bvn"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="DCd-f6-f12" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="957" y="803"/>
+            <point key="canvasLocation" x="919" y="679"/>
         </scene>
     </scenes>
     <resources>

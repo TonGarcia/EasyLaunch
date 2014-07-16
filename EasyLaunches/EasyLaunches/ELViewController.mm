@@ -9,7 +9,7 @@
 #import "ELViewController.h"
 #import "ELImageProcessing.h"
 #import "tesseract.h"
-#import "ELDefinitionOfColors.h"
+#import "ELColorsDefinition.h"
 
 @interface ELViewController ()
 
@@ -117,7 +117,7 @@ UIButton *button;
     redEnabled = YES;
     greenEnbaled = NO;
     blueEnabled = NO;
-    markButton.tintColor = [[ELDefinitionOfColors sharedColor] elRed];
+    markButton.tintColor = [[ELColorsDefinition sharedColor] elRed];
 }
 
 - (void)greenMark:(id)sender
@@ -125,7 +125,7 @@ UIButton *button;
     greenEnbaled = YES;
     redEnabled = NO;
     blueEnabled = NO;
-    markButton.tintColor = [[ELDefinitionOfColors sharedColor] elGreen];
+    markButton.tintColor = [[ELColorsDefinition sharedColor] elGreen];
 }
 
 - (void)blueMark:(id)sender
@@ -133,7 +133,7 @@ UIButton *button;
     blueEnabled = YES;
     greenEnbaled = NO;
     redEnabled = NO;
-    markButton.tintColor = [[ELDefinitionOfColors sharedColor] elBlue];
+    markButton.tintColor = [[ELColorsDefinition sharedColor] elBlue];
 }
 
 // clear image view and array
@@ -225,11 +225,11 @@ UIButton *button;
     
     // getting rgba
     if (redEnabled) {
-        colorRef = [[[ELDefinitionOfColors sharedColor] elRed] CGColor];
+        colorRef = [[[ELColorsDefinition sharedColor] elRed] CGColor];
     } else if (greenEnbaled) {
-        colorRef = [[[ELDefinitionOfColors sharedColor] elGreen] CGColor];
+        colorRef = [[[ELColorsDefinition sharedColor] elGreen] CGColor];
     } else if (blueEnabled) {
-        colorRef = [[[ELDefinitionOfColors sharedColor] elBlue] CGColor];
+        colorRef = [[[ELColorsDefinition sharedColor] elBlue] CGColor];
     }
     
     const CGFloat *components = CGColorGetComponents(colorRef);

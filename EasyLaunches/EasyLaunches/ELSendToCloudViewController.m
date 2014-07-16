@@ -11,7 +11,7 @@
 #import "ELTransaction.h"
 #import "ELEditViewController.h"
 #import "ELSingletonData.h"
-#import "ELDefinitionOfColors.h"
+#import "ELColorsDefinition.h"
 
 #define RECEITA "Receita"
 #define DESPESA "Despesa"
@@ -114,12 +114,12 @@
     cell.textLabel.text = [[allData objectAtIndex:indexPath.row] objectAtIndex:0];
     
     if ([[[allData objectAtIndex:indexPath.row] objectAtIndex:1] isEqualToString:@RECEITA]) {
-        cell.textLabel.textColor = [[ELDefinitionOfColors sharedColor] elGreen];
+        cell.textLabel.textColor = [[ELColorsDefinition sharedColor] elGreen];
         
     } else if ([[[allData objectAtIndex:indexPath.row] objectAtIndex:1] isEqualToString:@DESPESA]) {
-        cell.textLabel.textColor = [[ELDefinitionOfColors sharedColor] elRed];
+        cell.textLabel.textColor = [[ELColorsDefinition sharedColor] elRed];
     } else if ([[[allData objectAtIndex:indexPath.row] objectAtIndex:1] isEqualToString:@INFO]) {
-        cell.textLabel.textColor = [[ELDefinitionOfColors sharedColor] elBlue];
+        cell.textLabel.textColor = [[ELColorsDefinition sharedColor] elBlue];
     }
     
     return cell;

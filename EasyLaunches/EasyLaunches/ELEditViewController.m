@@ -8,7 +8,7 @@
 
 #import "ELEditViewController.h"
 #import "ELSingletonData.h"
-#import "ELDefinitionOfColors.h"
+#import "ELColorsDefinition.h"
 
 #define RECEITA "Receita"
 #define DESPESA "Despesa"
@@ -39,7 +39,7 @@
     
     UIBarButtonItem *rightButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(saveValueEdited)];
     self.navigationItem.rightBarButtonItem = rightButton;
-    fieldValue.textColor = [[ELDefinitionOfColors sharedColor] elGreen];
+    fieldValue.textColor = [[ELColorsDefinition sharedColor] elGreen];
 }
 
 // loading informations of the rows clicked or nothing if add new row
@@ -49,13 +49,13 @@
     
     if ([[[ELSingletonData sharedData] sharedMarkType] isEqualToString:@RECEITA]) {
         type.selectedSegmentIndex = 0;
-        fieldValue.textColor = [[ELDefinitionOfColors sharedColor] elGreen];
+        fieldValue.textColor = [[ELColorsDefinition sharedColor] elGreen];
     } else if ([[[ELSingletonData sharedData] sharedMarkType] isEqualToString:@DESPESA]) {
         type.selectedSegmentIndex = 1;
-        fieldValue.textColor = [[ELDefinitionOfColors sharedColor] elRed];
+        fieldValue.textColor = [[ELColorsDefinition sharedColor] elRed];
     } else if ([[[ELSingletonData sharedData] sharedMarkType] isEqualToString:@INFO]) {
         type.selectedSegmentIndex = 2;
-        fieldValue.textColor = [[ELDefinitionOfColors sharedColor] elBlue];
+        fieldValue.textColor = [[ELColorsDefinition sharedColor] elBlue];
     }
 }
 
@@ -97,11 +97,11 @@
 - (IBAction)segmentSetColor:(id)sender
 {
     if (type.selectedSegmentIndex == 0) {
-        fieldValue.textColor = [[ELDefinitionOfColors sharedColor] elGreen];
+        fieldValue.textColor = [[ELColorsDefinition sharedColor] elGreen];
     } else if (type.selectedSegmentIndex == 1) {
-        fieldValue.textColor = [[ELDefinitionOfColors sharedColor] elRed];
+        fieldValue.textColor = [[ELColorsDefinition sharedColor] elRed];
     } else {
-        fieldValue.textColor = [[ELDefinitionOfColors sharedColor] elBlue];
+        fieldValue.textColor = [[ELColorsDefinition sharedColor] elBlue];
     }
 }
 

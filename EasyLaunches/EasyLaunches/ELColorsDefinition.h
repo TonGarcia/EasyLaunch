@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface ELDefinitionOfColors : NSObject
+@interface ELColorsDefinition : NSObject
 
 @property (nonatomic) UIColor *elGreen;
 @property (nonatomic) UIColor *elRed;
