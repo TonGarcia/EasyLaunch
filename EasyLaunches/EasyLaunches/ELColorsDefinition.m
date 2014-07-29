@@ -13,6 +13,7 @@
 @synthesize elGreen;
 @synthesize elRed;
 @synthesize elBlue;
+@synthesize elGlobalTint;
 
 - (id)init
 {
@@ -45,6 +46,10 @@
         
         elBlue = [[UIColor alloc] init];
         elBlue = [UIColor colorWithRed:0.0/255.0 green:0.0/255.0 blue:255.0/255.0 alpha:1];
+        
+//        ELViewController *tmp = [[ELViewController alloc] init];
+//        elGlobalTint = [[UIColor alloc] init];
+//        elGlobalTint = [[tmp view]tintColor];
     }
     
     return self;

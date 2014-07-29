@@ -53,9 +53,6 @@
     } else if ([[[ELSingletonData sharedData] sharedMarkType] isEqualToString:@DESPESA]) {
         type.selectedSegmentIndex = 1;
         fieldValue.textColor = [[ELColorsDefinition sharedColor] elRed];
-    } else if ([[[ELSingletonData sharedData] sharedMarkType] isEqualToString:@INFO]) {
-        type.selectedSegmentIndex = 2;
-        fieldValue.textColor = [[ELColorsDefinition sharedColor] elBlue];
     }
 }
 
@@ -74,19 +71,9 @@
         [[ELSingletonData sharedData] setSharedMarkType:@RECEITA];
     } else if (type.selectedSegmentIndex == 1) {
         [[ELSingletonData sharedData] setSharedMarkType:@DESPESA];
-    } else if (type.selectedSegmentIndex == 2) {
-        [[ELSingletonData sharedData] setSharedMarkType:@INFO];
     }
     
     [[ELSingletonData sharedData] setSaveClicked:YES];
-    
-    
-//    [UIView animateWithDuration:0.75
-//                     animations:^{
-//                         [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
-//                         [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromLeft forView:self.navigationController.view cache:NO];
-//                     }];
-//    [self.navigationController popViewControllerAnimated:NO];
     
     [self.navigationController popViewControllerAnimated:YES];
     
@@ -100,8 +87,6 @@
         fieldValue.textColor = [[ELColorsDefinition sharedColor] elGreen];
     } else if (type.selectedSegmentIndex == 1) {
         fieldValue.textColor = [[ELColorsDefinition sharedColor] elRed];
-    } else {
-        fieldValue.textColor = [[ELColorsDefinition sharedColor] elBlue];
     }
 }
 

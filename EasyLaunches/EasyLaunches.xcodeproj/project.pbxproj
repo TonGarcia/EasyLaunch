@@ -786,7 +786,7 @@
 				ORGANIZATIONNAME = EasyLaunches;
 				TargetAttributes = {
 					075A2F39193D1D8C002E8926 = {
-						DevelopmentTeam = A9GRUT7L2F;
+						DevelopmentTeam = P669TNS48R;
 					};
 					075A2F5A193D1D8C002E8926 = {
 						TestTargetID = 075A2F39193D1D8C002E8926;

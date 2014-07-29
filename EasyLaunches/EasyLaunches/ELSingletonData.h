@@ -12,6 +12,7 @@
 
 @property (nonatomic) NSString *sharedProcessedValue;
 @property (nonatomic) NSString *sharedMarkType;
+@property (nonatomic) NSString *sharedProcessedInfo;
 @property (nonatomic) NSInteger refRow;
 @property (nonatomic) BOOL saveClicked;
 @property (nonatomic) BOOL editMode;

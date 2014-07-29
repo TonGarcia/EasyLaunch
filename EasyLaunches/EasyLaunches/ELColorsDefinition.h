@@ -7,12 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
+//#import "ELViewController.h"
 
 @interface ELColorsDefinition : NSObject
 
 @property (nonatomic) UIColor *elGreen;
 @property (nonatomic) UIColor *elRed;
 @property (nonatomic) UIColor *elBlue;
+@property (nonatomic) UIColor *elGlobalTint;
 
 + (id)sharedColor;
 

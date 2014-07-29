@@ -57,10 +57,6 @@
     for (NSMutableArray *item in load) {
         [allData addObject:item];
     }
-
-    // don't work
-    //self.navigationItem.backBarButtonItem.title = @"Cancelar";
-    
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -72,6 +68,7 @@
         NSMutableArray *tmp = [[NSMutableArray alloc]init];
         [tmp addObject:[[ELSingletonData sharedData] sharedProcessedValue]];
         [tmp addObject:[[ELSingletonData sharedData] sharedMarkType]];
+        [tmp addObject:[[ELSingletonData sharedData] sharedProcessedInfo]];
         
         // it was editing then the new element will be replaced else will be added
         if ([[ELSingletonData sharedData] editMode] == YES) {
@@ -106,20 +103,23 @@
     static NSString *simpleTableIdentifier = @"SimpleTableCell";
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
+    cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:simpleTableIdentifier];
     
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:simpleTableIdentifier];
     }
     
     cell.textLabel.text = [[allData objectAtIndex:indexPath.row] objectAtIndex:0];
+   
+    cell.detailTextLabel.text = [[allData objectAtIndex:indexPath.row] objectAtIndex:2];
+    cell.detailTextLabel.textColor = [[ELColorsDefinition sharedColor] elBlue];
     
     if ([[[allData objectAtIndex:indexPath.row] objectAtIndex:1] isEqualToString:@RECEITA]) {
         cell.textLabel.textColor = [[ELColorsDefinition sharedColor] elGreen];
         
     } else if ([[[allData objectAtIndex:indexPath.row] objectAtIndex:1] isEqualToString:@DESPESA]) {
         cell.textLabel.textColor = [[ELColorsDefinition sharedColor] elRed];
-    } else if ([[[allData objectAtIndex:indexPath.row] objectAtIndex:1] isEqualToString:@INFO]) {
-        cell.textLabel.textColor = [[ELColorsDefinition sharedColor] elBlue];
     }
     
     return cell;
@@ -192,6 +192,7 @@
 
     [[ELSingletonData sharedData] setSharedProcessedValue:[[allData objectAtIndex:indexPath.row] objectAtIndex:0]];
     [[ELSingletonData sharedData] setSharedMarkType:[[allData objectAtIndex:indexPath.row] objectAtIndex:1]];
+    [[ELSingletonData sharedData] setSharedProcessedInfo:[[allData objectAtIndex:indexPath.row] objectAtIndex:2]];
     [[ELSingletonData sharedData] setRefRow:indexPath.row];
     [[ELSingletonData sharedData] setEditMode:YES];
     

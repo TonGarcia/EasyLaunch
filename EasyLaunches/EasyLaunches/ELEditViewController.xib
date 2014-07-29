@@ -28,7 +28,6 @@
                     <segments>
                         <segment title="Receita"/>
                         <segment title="Despesa"/>
-                        <segment title="Info"/>
                     </segments>
                     <connections>
                         <action selector="segmentSetColor:" destination="-1" eventType="valueChanged" id="hYm-2y-fmV"/>
