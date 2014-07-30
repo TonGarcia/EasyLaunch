@@ -46,10 +46,7 @@
     fieldInfo.textColor = [[ELColorsDefinition sharedColor] elBlue];
     
     type.tintColor = [[ELColorsDefinition sharedColor] elGreen];
-//    [[UISegmentedControl appearance] setTitleTextAttributes:@{
-//                                                              NSForegroundColorAttributeName : [[ELColorsDefinition sharedColor] elRed]
-//                                                              } forState:UIControlStateNormal];
-//    
+  
     self.navigationController.title = @"Editar";
 
 }
