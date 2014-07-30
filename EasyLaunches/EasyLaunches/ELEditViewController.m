@@ -12,7 +12,9 @@
 
 #define RECEITA "Receita"
 #define DESPESA "Despesa"
-#define INFO "Info"
+#define VALUE 0
+#define VALUE_TYPE 1
+#define INFO 2
 
 @interface ELEditViewController ()
 
@@ -22,6 +24,7 @@
 
 @synthesize fieldValue;
 @synthesize type;
+@synthesize fieldInfo;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -40,19 +43,32 @@
     UIBarButtonItem *rightButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(saveValueEdited)];
     self.navigationItem.rightBarButtonItem = rightButton;
     fieldValue.textColor = [[ELColorsDefinition sharedColor] elGreen];
+    fieldInfo.textColor = [[ELColorsDefinition sharedColor] elBlue];
+    
+    type.tintColor = [[ELColorsDefinition sharedColor] elGreen];
+//    [[UISegmentedControl appearance] setTitleTextAttributes:@{
+//                                                              NSForegroundColorAttributeName : [[ELColorsDefinition sharedColor] elRed]
+//                                                              } forState:UIControlStateNormal];
+//    
+    self.navigationController.title = @"Editar";
+
 }
 
 // loading informations of the rows clicked or nothing if add new row
 - (void)viewWillAppear:(BOOL)animated
 {
     fieldValue.text = [[ELSingletonData sharedData] sharedProcessedValue];
+    fieldInfo.text = [[ELSingletonData sharedData] sharedProcessedInfo];
     
     if ([[[ELSingletonData sharedData] sharedMarkType] isEqualToString:@RECEITA]) {
         type.selectedSegmentIndex = 0;
         fieldValue.textColor = [[ELColorsDefinition sharedColor] elGreen];
+        type.tintColor = [[ELColorsDefinition sharedColor] elGreen];
+        
     } else if ([[[ELSingletonData sharedData] sharedMarkType] isEqualToString:@DESPESA]) {
         type.selectedSegmentIndex = 1;
         fieldValue.textColor = [[ELColorsDefinition sharedColor] elRed];
+        type.tintColor = [[ELColorsDefinition sharedColor] elRed];
     }
 }
 
@@ -66,6 +82,7 @@
 - (void)saveValueEdited
 {
     [[ELSingletonData sharedData] setSharedProcessedValue:fieldValue.text];
+    [[ELSingletonData sharedData] setSharedProcessedInfo:fieldInfo.text];
     
     if (type.selectedSegmentIndex == 0) {
         [[ELSingletonData sharedData] setSharedMarkType:@RECEITA];
@@ -76,8 +93,6 @@
     [[ELSingletonData sharedData] setSaveClicked:YES];
     
     [self.navigationController popViewControllerAnimated:YES];
-    
-
 }
 
 // to set color for textfield (fieldValue)
@@ -85,8 +100,16 @@
 {
     if (type.selectedSegmentIndex == 0) {
         fieldValue.textColor = [[ELColorsDefinition sharedColor] elGreen];
+        type.tintColor = [[ELColorsDefinition sharedColor] elGreen];
+        [[UISegmentedControl appearance] setTitleTextAttributes:@{
+                                                                  NSForegroundColorAttributeName : [[ELColorsDefinition sharedColor] elRed]
+                                                                  } forState:UIControlStateNormal];
     } else if (type.selectedSegmentIndex == 1) {
         fieldValue.textColor = [[ELColorsDefinition sharedColor] elRed];
+        type.tintColor = [[ELColorsDefinition sharedColor] elRed];
+        [[UISegmentedControl appearance] setTitleTextAttributes:@{
+                                                                  NSForegroundColorAttributeName : [[ELColorsDefinition sharedColor] elGreen]
+                                                                  } forState:UIControlStateNormal];
     }
 }
 
