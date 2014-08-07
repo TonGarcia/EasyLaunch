@@ -414,8 +414,6 @@
 				07EC69C91955E0E400060743 /* ELSendToCloudViewController.m */,
 				075A2F52193D1D8C002E8926 /* ELViewController.h */,
 				075A2F53193D1D8C002E8926 /* ELViewController.mm */,
-				075A2F55193D1D8C002E8926 /* Images.xcassets */,
-				075A2F44193D1D8C002E8926 /* Supporting Files */,
 				9382A0CD1974BF150080586D /* ELEditViewController.h */,
 				9382A0CE1974BF150080586D /* ELEditViewController.m */,
 				9382A0CF1974BF150080586D /* ELEditViewController.xib */,
@@ -423,6 +421,8 @@
 				9333506B1974D65400A2E176 /* ELSingletonData.m */,
 				934F31C11976269600F44976 /* ELColorsDefinition.h */,
 				934F31C21976269600F44976 /* ELColorsDefinition.m */,
+				075A2F55193D1D8C002E8926 /* Images.xcassets */,
+				075A2F44193D1D8C002E8926 /* Supporting Files */,
 			);
 			path = EasyLaunches;
 			sourceTree = "<group>";

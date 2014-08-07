@@ -305,7 +305,7 @@ UIButton *button;
                                                     message:message
                                                    delegate:self
                                           cancelButtonTitle:@"Tentar Novamente"
-                                          otherButtonTitles:@"Ok",@"Add campo", nil];
+                                          otherButtonTitles:@"Ok",@"Add Info", nil];
     [toast show];
     
 //    int duration = 1; // duration in seconds
