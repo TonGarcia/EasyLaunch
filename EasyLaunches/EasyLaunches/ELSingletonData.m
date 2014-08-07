@@ -12,6 +12,7 @@
 
 @synthesize sharedProcessedValue;
 @synthesize sharedMarkType;
+@synthesize sharedProcessedInfo;
 @synthesize refRow;
 @synthesize saveClicked;
 @synthesize editMode;
@@ -41,6 +42,7 @@
     if (self) {
         sharedProcessedValue = [[NSString alloc]init];
         sharedMarkType = [[NSString alloc]init];
+        sharedProcessedInfo = [[NSString alloc] init];
     }
     
     return self;

@@ -86,11 +86,11 @@ UIButton *button;
     UIMenuItem *menuItemRedColor = [[UIMenuItem alloc] initWithTitle:@"Despesa" action:@selector(redMark:)];
     UIMenuItem *menuItemGreenColor = [[UIMenuItem alloc] initWithTitle:@"Receita" action:@selector(greenMark:)];
 
-    UIMenuItem *menuItemBlueColor = [[UIMenuItem alloc] initWithTitle:@"Info" action:@selector(blueMark:)];
+    //UIMenuItem *menuItemBlueColor = [[UIMenuItem alloc] initWithTitle:@"Info" action:@selector(blueMark:)];
     
     UIMenuController *menu = [UIMenuController sharedMenuController];
     
-    [menu setMenuItems:[NSArray arrayWithObjects:menuItemRedColor, menuItemGreenColor, menuItemBlueColor, nil]];
+    [menu setMenuItems:[NSArray arrayWithObjects:menuItemRedColor, menuItemGreenColor/*, menuItemBlueColor*/, nil]];
     
     [menu setTargetRect:buttonFrame inView:self.view];
     
@@ -105,8 +105,8 @@ UIButton *button;
 {
     BOOL result = NO;
     if(@selector(greenMark:) == action ||
-       @selector(redMark:) == action ||
-       @selector(blueMark:) == action) {
+       @selector(redMark:) == action/* ||
+       @selector(blueMark:) == action*/) {
         result = YES;
     }
     return result;
@@ -128,7 +128,7 @@ UIButton *button;
     markButton.tintColor = [[ELColorsDefinition sharedColor] elGreen];
 }
 
-- (void)blueMark:(id)sender
+- (void)blueMark
 {
     blueEnabled = YES;
     greenEnbaled = NO;
@@ -150,6 +150,11 @@ UIButton *button;
     smallerPointY = myImage.size.height;
     biggerPointX = 0.0;
     biggerPointY = 0.0;
+    
+    markButton.tintColor = [[ELColorsDefinition sharedColor] elGlobalTint];
+    blueEnabled = NO;
+    greenEnbaled = NO;
+    redEnabled = NO;
 }
 
 -(void)setImageAndResizeUIImageView
@@ -287,27 +292,47 @@ UIButton *button;
     //vector < vector<cv::Point> > contours;
     //findContours(img, contours, RETR_LIST, CHAIN_APPROX_SIMPLE);
     
-    
     Tesseract* tesseract = [[Tesseract alloc] initWithDataPath:@"tessdata" language:@"por+eng"];
     
     //[tesseract setVariableValue:@"0123456789" forKey:@"tessedit_char_whitelist"];
     [tesseract setImage:[ELImageProcessing UIImageFromCVMat:img]];
     [tesseract recognize];
     
-    processedValue = [tesseract recognizedText];
+    if (!blueEnabled) {
+        processedValue = [[tesseract recognizedText] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    } else {
+        processedInfo = [[tesseract recognizedText] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    }
+    
     
     //Valor processado = [tesseract recognizedText]
-    NSLog(@"%@", processedValue);
+    if (!blueEnabled) {
+        NSLog(@"%@", processedValue);
+    } else {
+        NSLog(@"%@", processedInfo);
+    }
+
     
-    NSString *message = [NSString stringWithFormat: @"Valor processado: %@",processedValue];
-    
-    UIAlertView *toast = [[UIAlertView alloc] initWithTitle:nil
-                                                    message:message
-                                                   delegate:self
-                                          cancelButtonTitle:@"Tentar Novamente"
-                                          otherButtonTitles:@"Ok",@"Add Info", nil];
-    [toast show];
-    
+    if (!blueEnabled) {
+        NSString *message = [NSString stringWithFormat: @"Valor processado: %@",processedValue];
+        
+        UIAlertView *toast = [[UIAlertView alloc] initWithTitle:nil
+                                                        message:message
+                                                       delegate:self
+                                              cancelButtonTitle:@"Tentar Novamente"
+                                              otherButtonTitles:@"Ok",@"Marcar Informação", nil];
+        [toast show];
+    } else {
+        NSString *message = [NSString stringWithFormat: @"Informação processada (%@): %@", processedValue, processedInfo];
+        
+        UIAlertView *toast = [[UIAlertView alloc] initWithTitle:nil
+                                                        message:message
+                                                       delegate:self
+                                              cancelButtonTitle:@"Tentar Novamente"
+                                              otherButtonTitles:@"Ok", nil];
+        [toast show];
+    }
+      
 //    int duration = 1; // duration in seconds
 //    
 //    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, duration * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
@@ -335,17 +360,41 @@ UIButton *button;
         
         [temp addObject:processedValue];
         
-        if (greenEnbaled) {
-            [temp addObject:@"Receita"];
-        } else if (redEnabled) {
-            [temp addObject:@"Despesa"];
-        } else if (blueEnabled) {
-            [temp addObject:@"Info"];
+        if (!refValueType) {
+            if (greenEnbaled) {
+                refValueType = @"Receita";
+            } else if (redEnabled) {
+                refValueType = @"Despesa";
+            }
         }
         
-        [allProcessedData addObject:temp];
+        [temp addObject:refValueType];
         
+        if (!blueEnabled) {
+            [temp addObject:@""];
+        } else {
+            [temp addObject:processedInfo];
+        }
+        
+        NSLog(@"%@", temp);
+        
+        
+        [allProcessedData addObject:temp];
         [allProcessedData writeToFile:path atomically:YES];
+        
+        markButton.tintColor = [[ELColorsDefinition sharedColor] elGlobalTint];
+        blueEnabled = NO;
+        
+    } else if (buttonIndex == 2) {
+        imageLastSate = imageView.image;
+        
+        if (greenEnbaled) {
+            refValueType = @"Receita";
+        } else if (redEnabled) {
+            refValueType = @"Despesa";
+        }
+        
+        [self blueMark];
         
     } else {
         imageView.image = imageLastSate;

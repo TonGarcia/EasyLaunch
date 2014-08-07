@@ -35,7 +35,9 @@ using namespace cv;
     CGFloat smallerPointY;
     CGFloat biggerPointY;
     NSString *processedValue;
+    NSString *processedInfo;
     NSMutableArray *allProcessedData;
+    NSString *refValueType;
 }
 
 @property (strong, nonatomic) IBOutlet UIImageView *imageView;
