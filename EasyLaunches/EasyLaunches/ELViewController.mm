@@ -76,6 +76,14 @@ UIButton *button;
     
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    if (returningThePhotoLibrary) {
+        [self clearMarks:nil];
+        returningThePhotoLibrary = NO;
+    }
+}
+
 - (IBAction)markButtonClicked:(UIBarButtonItem *)sender forEvent:(UIEvent*)event
 {
     [self becomeFirstResponder];
@@ -215,6 +223,8 @@ UIButton *button;
         [alertColor show];
     }
     
+    moved = YES;
+    
     UITouch *touch = [touches anyObject];
     CGPoint currentPoint = [touch locationInView:imageView];
     
@@ -272,6 +282,12 @@ UIButton *button;
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
+    if (!moved) {
+        return;
+    }
+    
+    moved = NO;
+    
     biggerPointX *= 2;
     biggerPointY *= 2;
     smallerPointX *= 2;
@@ -453,6 +469,8 @@ UIButton *button;
     
     [self setImageAndResizeUIImageView];
     
+    returningThePhotoLibrary = YES;
+    
     // Animate to callback from the camera
     [picker dismissViewControllerAnimated:YES completion:NULL];
     
@@ -460,6 +478,7 @@ UIButton *button;
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
     // Listen the cancel event on the camera (permit it)
+    returningThePhotoLibrary = NO;
     [picker dismissViewControllerAnimated:YES completion:NULL];
     
 }

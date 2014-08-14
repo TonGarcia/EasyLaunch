@@ -38,6 +38,8 @@ using namespace cv;
     NSString *processedInfo;
     NSMutableArray *allProcessedData;
     NSString *refValueType;
+    BOOL moved;
+    BOOL returningThePhotoLibrary;
 }
 
 @property (strong, nonatomic) IBOutlet UIImageView *imageView;
