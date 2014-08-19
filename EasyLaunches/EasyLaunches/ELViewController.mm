@@ -233,7 +233,7 @@ UIButton *button;
     [imageView.image drawInRect:CGRectMake(0, 0, imageView.frame.size.width, imageView.frame.size.height)];
     CGContextMoveToPoint(UIGraphicsGetCurrentContext(), lastPoint.x, lastPoint.y);
     CGContextAddLineToPoint(UIGraphicsGetCurrentContext(), currentPoint.x, currentPoint.y);
-    CGContextSetLineCap(UIGraphicsGetCurrentContext(), kCGLineCapRound);
+    CGContextSetLineCap(UIGraphicsGetCurrentContext(), kCGLineCapButt);
     CGContextSetLineWidth(UIGraphicsGetCurrentContext(), brush);
     
     CGColorRef colorRef;
